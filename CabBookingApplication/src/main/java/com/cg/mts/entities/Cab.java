@@ -1,9 +1,25 @@
 package com.cg.mts.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Cab {
+	@Id
 	private int cabId;
 	private String carType;
 	private float perKmRate;
+	
+	public Cab() {
+		
+	}
+	
+	public Cab(int cabId, String carType, float perKmRate) {
+		super();
+		this.cabId = cabId;
+		this.carType = carType;
+		this.perKmRate = perKmRate;
+	}
 	public int getCabId() {
 		return cabId;
 	}
