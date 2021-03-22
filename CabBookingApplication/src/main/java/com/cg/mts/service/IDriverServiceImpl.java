@@ -11,7 +11,49 @@ import com.cg.mts.repository.IDriverRepository;
 
 @Service("ids")
 public class IDriverServiceImpl implements IDriverService {
+	@Autowired
+	IDriverRepository dDao;
+	 
 
+	@Override
+	public List<Driver> insertDriver(Driver driver) {
+		dDao.saveAndFlush(driver);
+		return dDao.findAll();
+	}
+
+	@Override
+	public List<Driver> updateDriver(Driver driver) throws DriverNotFoundException {
+		 
+		return null;
+	}
+
+	@Override
+	public List<Driver> deleteDriver(int driverId) throws DriverNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Driver> viewBestDrivers() throws DriverNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Driver viewDriver(int driverId) throws DriverNotFoundException {
+		
+		
+		return dDao.findById(driverId).get();
+	}
+
+	@Override
+	public List<Driver> displayAllDriver() {
+		 
+		return dDao.findAll();
+	}
+	
+	 
+/*
 	@Autowired
 	IDriverRepository idr;
 	
@@ -39,5 +81,6 @@ public class IDriverServiceImpl implements IDriverService {
 	public Driver viewDriver(int driverId) throws DriverNotFoundException {
 		return idr.viewDriver(driverId);
 	}
+	*/
 	
 }

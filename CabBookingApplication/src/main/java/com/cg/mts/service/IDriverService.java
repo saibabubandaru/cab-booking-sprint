@@ -6,9 +6,10 @@ import com.cg.mts.entities.Driver;
 import com.cg.mts.exception.DriverNotFoundException;
 
 public interface IDriverService {
-	public Driver insertDriver(Driver driver);
-	public Driver updateDriver(Driver driver) throws DriverNotFoundException;
-	public Driver deleteDriver(int driverId) throws DriverNotFoundException;
+	public List<Driver> displayAllDriver();
+	public List<Driver> insertDriver(Driver driver);
+	public List<Driver> updateDriver(Driver driver) throws DriverNotFoundException;
+	public List<Driver> deleteDriver(int driverId) throws DriverNotFoundException;
 	public List<Driver>viewBestDrivers() throws DriverNotFoundException;
 	public Driver viewDriver(int driverId) throws DriverNotFoundException;
 }

@@ -23,7 +23,21 @@ public class DriverController {
 
 	@Autowired
 	IDriverService ids;
+	@GetMapping
+	public List<Driver> displayAllDrivers(){
+		return ids.displayAllDriver();
+		
+	}
+	@PostMapping
+	public List<Driver> addDriver(Driver driver){
+		return ids.insertDriver(driver);
+	}
 	
+	@GetMapping("/{driverId}")
+	public Driver viewDriver(@PathVariable int driverId) throws DriverNotFoundException {
+		return ids.viewDriver(driverId);
+	}
+	/*
 	@PostMapping
 	public Driver insertDriver(@RequestBody Driver driver) {
 		return ids.insertDriver(driver);
@@ -48,5 +62,6 @@ public class DriverController {
 	public Driver viewDriver(@PathVariable int driverId) throws DriverNotFoundException {
 		return ids.viewDriver(driverId);
 	}
+	*/
 	
 }
