@@ -23,7 +23,7 @@ public class IDriverDaoImpl implements IDriverDao {
 
 	@Override
 	public List<Driver> viewBestDrivers() throws DriverNotFoundException {
-		TypedQuery<Driver> q= em.createQuery("select d from Driver d where d.rating >",Driver.class);
+		TypedQuery<Driver> q= em.createQuery("select d from Driver d where d.rating >=4.5",Driver.class);
 		return q.getResultList();
 	}
 
