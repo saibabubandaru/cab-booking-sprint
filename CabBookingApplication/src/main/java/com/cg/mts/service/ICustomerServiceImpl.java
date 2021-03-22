@@ -20,8 +20,15 @@ public class ICustomerServiceImpl implements ICustomerService {
 
 	@Override
 	public Customer updateCustomer(Customer customer) {
-
-		return null;
+		Customer cus = cDao.findById(customer.getCustomerId()).get();
+		cus.setEmail(customer.getEmail());
+		cus.setMobileNumber(customer.getMobileNumber());
+		cus.setUsername(customer.getUsername());
+		cus.setPassword(customer.getPassword());;
+		if(cus!=null) {
+			cDao.save(cus);
+		}
+		return cus;
 	}
 
 	@Override
