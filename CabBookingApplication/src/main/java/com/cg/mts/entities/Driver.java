@@ -18,8 +18,10 @@ public class Driver extends AbstractUser {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int driverId;
 	private String licenseNo;
+	
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Cab cab;
+	
 	private float rating;
 
 	public Driver() {
