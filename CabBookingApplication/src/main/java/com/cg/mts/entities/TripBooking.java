@@ -3,21 +3,25 @@ package com.cg.mts.entities;
 import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+@Entity
 public class TripBooking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int tripBookingId;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(targetEntity = Customer.class,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "customerId",referencedColumnName = "customerId")
 	private int customerId;
-
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(targetEntity = Driver.class,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "driverId", referencedColumnName = "driverId")
 	private Driver driver;
 	private String fromLocation;
 	private String toLocation;
@@ -26,6 +30,10 @@ public class TripBooking {
 	private boolean status;
 	private float distanceInKm;
 	private float bill;
+	
+	public TripBooking() {
+		
+	}
 
 	public int getTripBookingId() {
 		return tripBookingId;
