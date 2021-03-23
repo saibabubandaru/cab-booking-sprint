@@ -1,8 +1,5 @@
 package com.cg.mts.entities;
 
-import javax.persistence.Entity;
-
-
 public abstract class AbstractUser {
 	private String username;
 	private String password;
