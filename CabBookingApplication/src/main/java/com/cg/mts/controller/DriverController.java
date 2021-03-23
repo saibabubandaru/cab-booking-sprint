@@ -22,46 +22,53 @@ import com.cg.mts.service.IDriverService;
 public class DriverController {
 
 	@Autowired
-	IDriverService ids;
+	IDriverService ids; 
+
 	@GetMapping
-	public List<Driver> displayAllDrivers(){
+	public List<Driver> displayAllDrivers() {
 		return ids.displayAllDriver();
+
+	}
+
+	@PostMapping
+	public List<Driver> addDriver(Driver driver) {
+		return ids.insertDriver(driver);
+	}
+
+	@GetMapping("/{driverId}")
+	public Driver viewDriver(@PathVariable int driverId) throws DriverNotFoundException {
+		return ids.viewDriver(driverId);
+	}
+	
+	@GetMapping(value="/bestDrivers")
+	public List<Driver> viewBestDrivers() {
 		
+		try {
+			return ids.viewBestDrivers();
+		} catch (DriverNotFoundException e) {
+			 
+			e.printStackTrace();
+		}
+		return null;
+
 	}
-	@PostMapping
-	public List<Driver> addDriver(Driver driver){
-		return ids.insertDriver(driver);
-	}
-	
-	@GetMapping("/{driverId}")
-	public Driver viewDriver(@PathVariable int driverId) throws DriverNotFoundException {
-		return ids.viewDriver(driverId);
-	}
+
 	/*
-	@PostMapping
-	public Driver insertDriver(@RequestBody Driver driver) {
-		return ids.insertDriver(driver);
-	}
+	 * @PostMapping public Driver insertDriver(@RequestBody Driver driver) { return
+	 * ids.insertDriver(driver); }
+	 * 
+	 * @PutMapping public Driver updateDriver(@RequestBody Driver driver) throws
+	 * DriverNotFoundException { return ids.updateDriver(driver); }
+	 * 
+	 * @DeleteMapping("/{driverId}") public Driver deleteDriver(@PathVariable int
+	 * driverId) throws DriverNotFoundException { return ids.deleteDriver(driverId);
+	 * }
+	 * 
+	 * @GetMapping public List<Driver> viewBestDrivers() throws
+	 * DriverNotFoundException { return ids.viewBestDrivers(); }
+	 * 
+	 * @GetMapping("/{driverId}") public Driver viewDriver(@PathVariable int
+	 * driverId) throws DriverNotFoundException { return ids.viewDriver(driverId); }
+	 */
 
-	@PutMapping
-	public Driver updateDriver(@RequestBody Driver driver) throws DriverNotFoundException {
-		return ids.updateDriver(driver);
-	}
-
-	@DeleteMapping("/{driverId}")
-	public Driver deleteDriver(@PathVariable int driverId) throws DriverNotFoundException {
-		return ids.deleteDriver(driverId);
-	}
-
-	@GetMapping
-	public List<Driver> viewBestDrivers() throws DriverNotFoundException {
-		return ids.viewBestDrivers();
-	}
-
-	@GetMapping("/{driverId}")
-	public Driver viewDriver(@PathVariable int driverId) throws DriverNotFoundException {
-		return ids.viewDriver(driverId);
-	}
-	*/
-	
 }

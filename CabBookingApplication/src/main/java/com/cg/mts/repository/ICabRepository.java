@@ -2,10 +2,13 @@ package com.cg.mts.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.cg.mts.dao.ICabDao;
 import com.cg.mts.entities.Cab;
 import com.cg.mts.exception.CabNotFoundException;
 
-public interface ICabRepository {
+public interface ICabRepository extends ICabDao, JpaRepository<Cab, Integer>{
 	/*
 	 * public Cab insertCab(Cab cab); public Cab updateCab(Cab cab) throws
 	 * CabNotFoundException; public Cab deleteCab(Cab cab) throws
@@ -13,4 +16,5 @@ public interface ICabRepository {
 	 * CabNotFoundException; public int countCabsOfType(String carType) throws
 	 * CabNotFoundException;
 	 */
+	
 }
