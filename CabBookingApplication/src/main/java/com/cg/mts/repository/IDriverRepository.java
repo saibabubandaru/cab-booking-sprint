@@ -11,16 +11,5 @@ import com.cg.mts.exception.DriverNotFoundException;
 
 @Repository("dDao")
 public interface IDriverRepository extends IDriverDao,JpaRepository<Driver, Integer>{
-	/*
-	 * 
-	 * public Driver insertDriver(Driver driver); public Driver updateDriver(Driver
-	 * driver)throws DriverNotFoundException; public Driver deleteDriver(int
-	 * driverId)throws DriverNotFoundException; public Driver viewDriver(int
-	 * driverId)throws DriverNotFoundException; public
-	 * List<Driver>viewBestDrivers()throws DriverNotFoundException;
-	 * 
-	 * 
-	 */
 	
-
 }

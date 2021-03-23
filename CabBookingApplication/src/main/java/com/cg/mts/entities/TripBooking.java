@@ -3,21 +3,25 @@ package com.cg.mts.entities;
 import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+@Entity
 public class TripBooking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int tripBookingId;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private int customerId;
-
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(targetEntity = Customer.class,fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "customerId",referencedColumnName = "customerId")
+	private Customer customer;
+	@ManyToOne(targetEntity = Driver.class,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "driverId", referencedColumnName = "driverId")
 	private Driver driver;
 	private String fromLocation;
 	private String toLocation;
@@ -26,6 +30,10 @@ public class TripBooking {
 	private boolean status;
 	private float distanceInKm;
 	private float bill;
+	
+	public TripBooking() {
+		
+	}
 
 	public int getTripBookingId() {
 		return tripBookingId;
@@ -35,12 +43,12 @@ public class TripBooking {
 		this.tripBookingId = tripBookingId;
 	}
 
-	public int getCustomerId() {
-		return customerId;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public Driver getDriver() {
