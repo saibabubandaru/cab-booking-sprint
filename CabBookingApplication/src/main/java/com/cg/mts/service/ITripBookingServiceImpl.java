@@ -16,7 +16,8 @@ public class ITripBookingServiceImpl implements ITripBookingService {
 	
 	@Override
 	public TripBooking insertTripBooking(TripBooking tripBooking) {
-		return tbDao.saveAndFlush(tripBooking);
+		tbDao.saveAndFlush(tripBooking);
+		return tripBooking;
 	}
 
 	@Override
@@ -30,15 +31,16 @@ public class ITripBookingServiceImpl implements ITripBookingService {
 		return tbDao.findAll();
 	}
 
+	
 	@Override
 	public List<TripBooking> viewAllTripsCustomer(int customerId) {
-		return tbDao.findByCustomerId(customerId);
+		return tbDao.viewAllTripsCustomer(customerId);
 	}
 
+	
 	@Override
 	public float calculateBill(int customerId) {
-		TripBooking getCustomerBill = tbDao.findByCustomerId(customerId).get(0);
-		return getCustomerBill.getBill();
+		return tbDao.calculateBill(customerId);
 	}
 
 }

@@ -22,7 +22,7 @@ public class TripBookingController {
 
 	@Autowired
 	ITripBookingService itbs;
-	
+
 	@PostMapping
 	public TripBooking insertTripBooking(@RequestBody TripBooking tripBooking) {
 		return itbs.insertTripBooking(tripBooking);
@@ -38,6 +38,7 @@ public class TripBookingController {
 		return itbs.deleteTripBooking(tripBooking);
 	}
 
+	
 	@GetMapping("/{customerId}")
 	public List<TripBooking> viewAllTripsCustomer(@PathVariable int customerId) {
 		return itbs.viewAllTripsCustomer(customerId);
@@ -47,6 +48,6 @@ public class TripBookingController {
 	public float calculateBill(@PathVariable int customerId) {
 		return itbs.calculateBill(customerId);
 	}
-	
-	
+	 
+
 }

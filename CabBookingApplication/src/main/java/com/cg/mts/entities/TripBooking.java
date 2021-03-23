@@ -17,9 +17,9 @@ public class TripBooking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int tripBookingId;
-	@OneToOne(targetEntity = Customer.class,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(targetEntity = Customer.class,fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "customerId",referencedColumnName = "customerId")
-	private int customerId;
+	private Customer customer;
 	@ManyToOne(targetEntity = Driver.class,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "driverId", referencedColumnName = "driverId")
 	private Driver driver;
@@ -43,12 +43,12 @@ public class TripBooking {
 		this.tripBookingId = tripBookingId;
 	}
 
-	public int getCustomerId() {
-		return customerId;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public Driver getDriver() {

@@ -13,5 +13,5 @@ public interface IDriverService {
 	public List<Driver> insertDriver(Driver driver);
 	public Driver updateDriver(Driver driver) throws DriverNotFoundException;
 	public List<Driver> deleteDriver(int driverId) throws DriverNotFoundException;
-	public String validateDriver(AbstractUser user);
+
 }

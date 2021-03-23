@@ -8,7 +8,6 @@ import com.cg.mts.exception.DriverNotFoundException;
 
 public interface IDriverDao {
 
-	public List<Driver> viewBestDrivers() throws DriverNotFoundException;
-	public String validateDriver(AbstractUser user);
+	
 
 }

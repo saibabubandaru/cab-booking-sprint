@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.mts.entities.AbstractUser;
 import com.cg.mts.entities.Driver;
 import com.cg.mts.exception.DriverNotFoundException;
 import com.cg.mts.repository.IDriverRepository;

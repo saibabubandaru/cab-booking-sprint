@@ -7,6 +7,6 @@ import com.cg.mts.entities.TripBooking;
 public interface ITripBookingDao {
 
 	public List<TripBooking> viewAllTripsCustomer(int customerId);
-	public TripBooking calculateBill(int customerId);
+	public float calculateBill(int customerId);
 	
 }

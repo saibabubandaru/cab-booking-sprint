@@ -13,6 +13,6 @@ import com.cg.mts.entities.TripBooking;
 @Repository("tbDao")
 public interface ITripBookingRepository extends ITripBookingDao,JpaRepository<TripBooking, Integer>{
 		
-	public List<TripBooking> findByCustomerId(int customerId);
+	
 	
 }
