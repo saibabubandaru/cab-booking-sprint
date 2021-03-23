@@ -23,45 +23,36 @@ public class DriverController {
 
 	@Autowired
 	IDriverService ids;
+	
 	@GetMapping
 	public List<Driver> displayAllDrivers(){
 		return ids.displayAllDriver();
-		
-	}
-	@PostMapping
-	public List<Driver> addDriver(Driver driver){
-		return ids.insertDriver(driver);
 	}
 	
 	@GetMapping("/{driverId}")
 	public Driver viewDriver(@PathVariable int driverId) throws DriverNotFoundException {
 		return ids.viewDriver(driverId);
 	}
-	/*
+	
+	@GetMapping("/bestdrivers")
+	public List<Driver> viewBestDrivers() throws DriverNotFoundException {
+		return ids.viewBestDrivers();
+	}
+	
 	@PostMapping
-	public Driver insertDriver(@RequestBody Driver driver) {
+	public List<Driver> insertDriver(@RequestBody Driver driver){
 		return ids.insertDriver(driver);
 	}
-
+	
 	@PutMapping
 	public Driver updateDriver(@RequestBody Driver driver) throws DriverNotFoundException {
 		return ids.updateDriver(driver);
 	}
-
+	
 	@DeleteMapping("/{driverId}")
-	public Driver deleteDriver(@PathVariable int driverId) throws DriverNotFoundException {
+	public List<Driver> deleteDriver(@PathVariable int driverId) throws DriverNotFoundException {
 		return ids.deleteDriver(driverId);
 	}
 
-	@GetMapping
-	public List<Driver> viewBestDrivers() throws DriverNotFoundException {
-		return ids.viewBestDrivers();
-	}
-
-	@GetMapping("/{driverId}")
-	public Driver viewDriver(@PathVariable int driverId) throws DriverNotFoundException {
-		return ids.viewDriver(driverId);
-	}
-	*/
 	
 }

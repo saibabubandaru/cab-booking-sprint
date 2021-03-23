@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.cg.mts.entities.AbstractUser;
 import com.cg.mts.entities.Driver;
 import com.cg.mts.exception.DriverNotFoundException;
 
@@ -16,15 +17,5 @@ import com.cg.mts.exception.DriverNotFoundException;
 @Transactional
 public class IDriverDaoImpl implements IDriverDao {
 	
-	@PersistenceContext
-	EntityManager em;
-	
-
-
-	@Override
-	public List<Driver> viewBestDrivers() throws DriverNotFoundException {
-		TypedQuery<Driver> q= em.createQuery("select d from Driver d where d.rating >=4.5",Driver.class);
-		return q.getResultList();
-	}
 
 }
