@@ -3,10 +3,12 @@ package com.cg.mts.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.cg.mts.entities.Customer;
 import com.cg.mts.repository.ICustomerRepository;
-
+@Service("cusService")
 public class ICustomerServiceImpl implements ICustomerService {
 
 	@Autowired
@@ -20,14 +22,14 @@ public class ICustomerServiceImpl implements ICustomerService {
 
 	@Override
 	public Customer updateCustomer(Customer customer) {
-		Customer cus = cDao.findById(customer.getCustomerId()).get();
-		cus.setEmail(customer.getEmail());
-		cus.setMobileNumber(customer.getMobileNumber());
-		cus.setUsername(customer.getUsername());
-		cus.setPassword(customer.getPassword());;
-		if(cus!=null) {
-			cDao.save(cus);
-		}
+		 Customer cus = cDao.findById(customer.getCustomerId()).get();
+		 if(cus!=null) {
+			 cus.setEmail(customer.getEmail());
+			 cus.setMobileNumber(customer.getMobileNumber());
+			 cus.setUsername(customer.getUsername());
+			 cus.setPassword(customer.getUsername());
+			 cDao.save(cus);
+		 }
 		return cus;
 	}
 
