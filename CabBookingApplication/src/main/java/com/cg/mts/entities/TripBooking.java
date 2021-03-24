@@ -20,7 +20,7 @@ public class TripBooking {
 	@ManyToOne(targetEntity = Customer.class,fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "customerId",referencedColumnName = "customerId")
 	private Customer customer;
-	@ManyToOne(targetEntity = Driver.class,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(targetEntity = Driver.class,fetch = FetchType.LAZY)
 	@JoinColumn(name = "driverId", referencedColumnName = "driverId")
 	private Driver driver;
 	private String fromLocation;

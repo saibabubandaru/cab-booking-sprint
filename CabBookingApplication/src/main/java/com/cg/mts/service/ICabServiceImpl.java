@@ -62,4 +62,10 @@ public class ICabServiceImpl implements ICabService{
 		return 0;
 	}
 
+	@Override
+	public Cab getCabById(int cabID) {
+		 
+		return cabDao.findById(cabID).get();
+	}
+
 }

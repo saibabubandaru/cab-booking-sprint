@@ -17,4 +17,5 @@ public interface IAdminService {
 	public List<TripBooking>getTripsDatewise();
 	public List<TripBooking>getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime toDate) throws CustomerNotFoundException;
 	public List<Admin> viewALlAdmin();
+	public Admin getAdminById(int adminId);
 }
