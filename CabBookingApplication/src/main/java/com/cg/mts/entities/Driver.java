@@ -19,7 +19,7 @@ public class Driver extends AbstractUser {
 	private int driverId;
 	private String licenseNo;
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY)
 	private Cab cab;
 	
 	private float rating;

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.mts.entities.Customer;
+import com.cg.mts.exception.CustomerNotFoundException;
 import com.cg.mts.service.ICustomerService;
 
 @RestController
@@ -26,23 +27,46 @@ public class CustomerController {
 	}
 
 	@PutMapping
-	public Customer updateCustomer(Customer customer) {
-		return cusService.updateCustomer(customer);
+	public Customer updateCustomer(Customer customer) throws CustomerNotFoundException{
+		Customer cViewer = null;
+		Customer c =null;
+		try {
+			cViewer = viewCustomer(customer.getCustomerId());
+			c = cusService.updateCustomer(customer);
+		} catch (Exception e) {
+			 throw  new CustomerNotFoundException("Customer Not Found to perform Update Operation!");
+		}
+		return c;
 	}
 
 	@DeleteMapping
-	public Customer deleteCustomer(Customer customer) {
-		return cusService.deleteCustomer(customer);
+	public Customer deleteCustomer(Customer customer) throws CustomerNotFoundException {
+		Customer cViewer = null;
+		Customer c =null;
+		try {
+			cViewer = viewCustomer(customer.getCustomerId());
+			c = cusService.deleteCustomer(customer);
+		} catch (Exception e) {
+			 throw  new CustomerNotFoundException("Customer Not Found to perform Delete Operation!");
+		}
+		return c;
 	}
 
+	
 	@GetMapping(value="all")
 	public List<Customer> viewCustomers() {
 		return cusService.viewCustomers();
 	}
 
 	@GetMapping(value = "/{customerId}")
-	public Customer viewCustomer(@PathVariable int customerId) {
-		return cusService.viewCustomer(customerId);
+	public Customer viewCustomer(@PathVariable int customerId) throws CustomerNotFoundException {
+		Customer c = null;
+		try {
+			c = cusService.viewCustomer(customerId);
+		} catch (Exception e) {
+		 throw new CustomerNotFoundException("Customer with Id: "+customerId+" Not Found!");
+		}
+		return c;
 	}
 
 	public Customer validateCustomer(String username, String password) {

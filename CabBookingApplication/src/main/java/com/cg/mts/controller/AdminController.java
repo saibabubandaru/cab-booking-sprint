@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.mts.entities.Admin;
+import com.cg.mts.entities.Customer;
 import com.cg.mts.entities.TripBooking;
 import com.cg.mts.exception.AdminNotFoundException;
 import com.cg.mts.exception.CustomerNotFoundException;
 import com.cg.mts.service.IAdminService;
+import com.cg.mts.service.ICustomerService;
 
 @RestController
 @RequestMapping("/admin")
@@ -26,6 +28,10 @@ public class AdminController {
 
 	@Autowired
 	IAdminService ias;
+	
+	@Autowired
+	ICustomerService cusService;
+	 
 	
 	@GetMapping
 	public List<Admin> viewALlAdmin(){
@@ -39,17 +45,54 @@ public class AdminController {
 	
 	@DeleteMapping("/{adminId}")
 	public List<Admin> deleteAdmin(@PathVariable int adminId) throws AdminNotFoundException {
-		return ias.deleteAdmin(adminId);
+		List<Admin> s = null;
+		try {
+			s = ias.deleteAdmin(adminId);
+			
+		} catch (Exception e) {
+			throw new AdminNotFoundException("Admin with given ID: "+adminId+" Not Found to Delete");
+		}
+		return s;
+		
 	}
 	
 	@PutMapping
 	public Admin updateAdmin(@RequestBody Admin admin) throws AdminNotFoundException {
-		return ias.updateAdmin(admin);
+		Admin a = null;
+	 
+		try {
+			a = ias.getAdminById(admin.getAdminId());
+			ias.updateAdmin(admin);
+		} catch (Exception e) {
+			throw new AdminNotFoundException("Admin Not Found to Update");
+		}
+		return a;
+	}
+	@GetMapping("/{adminId}")
+	public Admin GetAdminById(@PathVariable int adminId) throws AdminNotFoundException {
+		Admin a = null;
+		 
+		try {
+			a = ias.getAdminById(adminId);
+			 
+		} catch (Exception e) {
+			throw new AdminNotFoundException("Admin with ID: "+adminId+" not found!");
+		}
+		return a;
 	}
 	
 	@GetMapping("/alltrips/{customerId}")
 	public List<TripBooking> getAllTrips(@PathVariable int customerId) throws CustomerNotFoundException {
-		return ias.getAllTrips(customerId);
+		
+		Customer c = null;
+		List<TripBooking> t=null;
+		try {
+			c = cusService.viewCustomer(customerId);
+			t = ias.getAllTrips(customerId);
+		} catch (Exception e) {
+			throw new CustomerNotFoundException("Can not find trips of Customer ID: "+customerId);
+		}
+		return t;
 	}
 
 	@GetMapping("/cabwise")
