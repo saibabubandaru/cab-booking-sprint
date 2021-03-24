@@ -31,12 +31,25 @@ public class DriverController {
 	
 	@GetMapping("/{driverId}")
 	public Driver viewDriver(@PathVariable int driverId) throws DriverNotFoundException {
-		return ids.viewDriver(driverId);
+		Driver driver = null;
+		try {
+			driver = ids.viewDriver(driverId);
+			
+		} catch (Exception e) {
+			throw new DriverNotFoundException("Driver with Id: "+driverId+" Not Found!");
+		}
+		return driver;
 	}
 	
 	@GetMapping("/bestdrivers")
 	public List<Driver> viewBestDrivers() throws DriverNotFoundException {
-		return ids.viewBestDrivers();
+		List<Driver> lis = null;
+		try {
+			lis= ids.viewBestDrivers();
+		} catch (Exception e) {
+			throw new DriverNotFoundException("Best Drivers List is Empty");
+		}
+		return lis;
 	}
 	
 	@PostMapping
@@ -46,12 +59,26 @@ public class DriverController {
 	
 	@PutMapping
 	public Driver updateDriver(@RequestBody Driver driver) throws DriverNotFoundException {
-		return ids.updateDriver(driver);
+		Driver driverCheck = null;
+		Driver d =null;
+		try {
+			driverCheck=viewDriver(driver.getDriverId());
+			d=ids.updateDriver(driver);
+		} catch (Exception e) {
+			throw new DriverNotFoundException("Driver with Id: "+driver.getDriverId()+" Not Found to Update!");
+		}
+		return d;
 	}
 	
 	@DeleteMapping("/{driverId}")
 	public List<Driver> deleteDriver(@PathVariable int driverId) throws DriverNotFoundException {
-		return ids.deleteDriver(driverId);
+		 List<Driver>  d = null;
+		try {
+			d = ids.deleteDriver(driverId);
+		} catch (Exception e) {
+			 throw new DriverNotFoundException("Driver with Id: "+driverId+" Not FOund To Delete!");
+		}
+		return d;
 	}
 
 	

@@ -65,5 +65,11 @@ public class IAdminServiceImpl implements IAdminService{
 	public List<TripBooking> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime toDate) throws CustomerNotFoundException {
 		return aDao.getAllTripsForDays(customerId, fromDate, toDate);
 	}
+
+	@Override
+	public Admin getAdminById(int adminId) {
+		 
+		return aDao.findById(adminId).get();
+	}
    
 }

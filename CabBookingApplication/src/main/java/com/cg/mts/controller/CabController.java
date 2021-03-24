@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.mts.entities.Cab;
+import com.cg.mts.exception.CabNotFoundException;
 import com.cg.mts.service.ICabService;
 
 @RestController
@@ -29,13 +30,29 @@ public class CabController {
 	}
 
 	@PutMapping
-	public Cab updateCab(@RequestBody Cab cab) {
-		return iCabService.updateCab(cab);
+	public Cab updateCab(@RequestBody Cab cab) throws CabNotFoundException {
+		Cab cabCheck = null;
+		Cab c = null;
+		try {
+			cabCheck = iCabService.getCabById(cab.getCabId());
+			c = iCabService.updateCab(cab);
+		} catch (Exception e) {
+			throw new CabNotFoundException("Cab not found to Update");
+		}
+		return c;
 	}
 
 	@DeleteMapping
-	public Cab deleteCab(Cab cab) {
-		return iCabService.deleteCab(cab);
+	public Cab deleteCab(Cab cab) throws CabNotFoundException {
+		Cab cabCheck = null;
+		Cab c = null;
+		try {
+			cabCheck = iCabService.getCabById(cab.getCabId());
+			c = iCabService.deleteCab(cab);
+		} catch (Exception e) {
+			throw new CabNotFoundException("Cab not found to Delete");
+		}
+		return c;
 	}
 	
 	@DeleteMapping(value="/id/{cabId}")
