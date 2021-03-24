@@ -33,7 +33,7 @@ public class AdminController {
 	}
 	
 	@PostMapping
-	public Admin insertAdmin(@RequestBody Admin admin) {
+	public Admin addService(@RequestBody Admin admin) {
 		return ias.insertAdmin(admin);
 	}
 	
