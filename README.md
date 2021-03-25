@@ -31,7 +31,7 @@
   - [x] Customer
   - [x] Driver
 - [ ] Junit Testing
-  - [ ] Admin
+  - [x] Admin
   - [ ] Cab
   - [ ] Customer
   - [ ] Trip
