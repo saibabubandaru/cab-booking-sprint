@@ -30,3 +30,10 @@
   - [x] Cab
   - [x] Customer
   - [x] Driver
+- [ ] Junit Testing
+  - [ ] Admin
+  - [ ] Cab
+  - [ ] Customer
+  - [ ] Trip
+  - [ ] Driver
+- [ ] Log4j
