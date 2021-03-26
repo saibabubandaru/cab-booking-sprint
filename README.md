@@ -32,7 +32,7 @@
   - [x] Driver
 - [ ] Junit Testing
   - [x] Admin
-  - [ ] Cab
+  - [x] Cab
   - [ ] Customer
   - [ ] Trip
   - [ ] Driver
