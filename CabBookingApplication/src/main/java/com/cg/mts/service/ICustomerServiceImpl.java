@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.cg.mts.entities.Customer;
 import com.cg.mts.repository.ICustomerRepository;
+
 @Service("cusService")
 public class ICustomerServiceImpl implements ICustomerService {
 
@@ -22,14 +23,14 @@ public class ICustomerServiceImpl implements ICustomerService {
 
 	@Override
 	public Customer updateCustomer(Customer customer) {
-		 Customer cus = cDao.findById(customer.getCustomerId()).get();
-		 if(cus!=null) {
-			 cus.setEmail(customer.getEmail());
-			 cus.setMobileNumber(customer.getMobileNumber());
-			 cus.setUsername(customer.getUsername());
-			 cus.setPassword(customer.getUsername());
-			 cDao.save(cus);
-		 }
+		Customer cus = cDao.findById(customer.getCustomerId()).get();
+		if (cus != null) {
+			cus.setEmail(customer.getEmail());
+			cus.setMobileNumber(customer.getMobileNumber());
+			cus.setUsername(customer.getUsername());
+			cus.setPassword(customer.getPassword());
+			cDao.save(cus);
+		}
 		return cus;
 	}
 

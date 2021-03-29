@@ -8,7 +8,7 @@ import com.cg.mts.dao.ICabDao;
 import com.cg.mts.entities.Cab;
 import com.cg.mts.exception.CabNotFoundException;
 
-public interface ICabRepository extends ICabDao, JpaRepository<Cab, Integer>{
+public interface ICabRepository extends ICabDao, JpaRepository<Cab, Integer> {
 	/*
 	 * public Cab insertCab(Cab cab); public Cab updateCab(Cab cab) throws
 	 * CabNotFoundException; public Cab deleteCab(Cab cab) throws
@@ -16,5 +16,5 @@ public interface ICabRepository extends ICabDao, JpaRepository<Cab, Integer>{
 	 * CabNotFoundException; public int countCabsOfType(String carType) throws
 	 * CabNotFoundException;
 	 */
-	
+
 }

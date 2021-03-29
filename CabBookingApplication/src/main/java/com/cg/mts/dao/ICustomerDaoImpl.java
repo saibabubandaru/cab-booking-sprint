@@ -7,8 +7,4 @@ import com.cg.mts.exception.CustomerNotFoundException;
 
 public class ICustomerDaoImpl implements ICustomerDao{
 
-	 
-
 }
-
-

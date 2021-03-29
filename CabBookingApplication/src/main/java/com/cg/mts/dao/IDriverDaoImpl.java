@@ -17,5 +17,4 @@ import com.cg.mts.exception.DriverNotFoundException;
 @Transactional
 public class IDriverDaoImpl implements IDriverDao {
 	
-
 }

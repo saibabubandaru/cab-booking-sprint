@@ -13,5 +13,5 @@ public class LoginServiceImpl implements LoginService {
 
 		return ld.validateCredintials(obj);
 	}
-
+	
 }

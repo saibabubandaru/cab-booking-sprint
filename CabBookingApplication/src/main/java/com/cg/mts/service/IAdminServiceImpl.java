@@ -12,14 +12,14 @@ import com.cg.mts.exception.CustomerNotFoundException;
 import com.cg.mts.repository.IAdminRepository;
 
 @Service("ias")
-public class IAdminServiceImpl implements IAdminService{
-	
+public class IAdminServiceImpl implements IAdminService {
+
 	@Autowired
 	IAdminRepository aDao;
-	
+
 	@Override
 	public List<Admin> viewALlAdmin() {
-		
+
 		return aDao.findAll();
 	}
 
@@ -62,14 +62,15 @@ public class IAdminServiceImpl implements IAdminService{
 	}
 
 	@Override
-	public List<TripBooking> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime toDate) throws CustomerNotFoundException {
+	public List<TripBooking> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime toDate)
+			throws CustomerNotFoundException {
 		return aDao.getAllTripsForDays(customerId, fromDate, toDate);
 	}
 
 	@Override
 	public Admin getAdminById(int adminId) {
-		 
+
 		return aDao.findById(adminId).get();
 	}
-   
+
 }

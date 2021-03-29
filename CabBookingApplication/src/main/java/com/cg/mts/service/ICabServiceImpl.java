@@ -10,11 +10,11 @@ import com.cg.mts.exception.CabNotFoundException;
 import com.cg.mts.repository.ICabRepository;
 
 @Service("iCabService")
-public class ICabServiceImpl implements ICabService{
-	
+public class ICabServiceImpl implements ICabService {
+
 	@Autowired
 	ICabRepository cabDao;
-	
+
 	@Override
 	public Cab insertCab(Cab cab) {
 		cabDao.saveAndFlush(cab);
@@ -23,12 +23,12 @@ public class ICabServiceImpl implements ICabService{
 
 	@Override
 	public Cab updateCab(Cab cab) {
-		 Cab tempCab = cabDao.findById(cab.getCabId()).get();
-		 if(tempCab!=null) {
-			 tempCab.setCarType(cab.getCarType());
-			 tempCab.setPerKmRate(cab.getPerKmRate());
-			 cabDao.save(tempCab);
-		 }
+		Cab tempCab = cabDao.findById(cab.getCabId()).get();
+		if (tempCab != null) {
+			tempCab.setCarType(cab.getCarType());
+			tempCab.setPerKmRate(cab.getPerKmRate());
+			cabDao.save(tempCab);
+		}
 		return tempCab;
 	}
 
@@ -40,7 +40,7 @@ public class ICabServiceImpl implements ICabService{
 
 	@Override
 	public List<Cab> viewCabsOfType(String carType) {
-		
+
 		try {
 			return cabDao.viewCabsOfType(carType);
 		} catch (CabNotFoundException e) {
@@ -52,7 +52,7 @@ public class ICabServiceImpl implements ICabService{
 
 	@Override
 	public int countCabsOfType(String carType) {
-	 
+
 		try {
 			return cabDao.countCabsOfType(carType);
 		} catch (CabNotFoundException e) {
@@ -64,7 +64,7 @@ public class ICabServiceImpl implements ICabService{
 
 	@Override
 	public Cab getCabById(int cabID) {
-		 
+
 		return cabDao.findById(cabID).get();
 	}
 

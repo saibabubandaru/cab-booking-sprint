@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 
 @Entity
 public class Admin extends AbstractUser {
@@ -13,12 +11,10 @@ public class Admin extends AbstractUser {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int adminId;
 
-	
-	  public Admin() {
-	  
-	  }
-	 
-	
+	public Admin() {
+
+	}
+
 	public int getAdminId() {
 		return adminId;
 	}

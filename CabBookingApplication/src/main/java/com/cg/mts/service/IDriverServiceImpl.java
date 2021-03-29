@@ -29,7 +29,7 @@ public class IDriverServiceImpl implements IDriverService {
 	@Override
 	public List<Driver> viewBestDrivers() throws DriverNotFoundException {
 		List<Driver> bestDrivers = dDao.findAll();
-		return bestDrivers.stream().filter((d)->d.getRating()>=4.5).collect(Collectors.toList());
+		return bestDrivers.stream().filter((d) -> d.getRating() >= 4.5).collect(Collectors.toList());
 	}
 
 	@Override
@@ -48,6 +48,5 @@ public class IDriverServiceImpl implements IDriverService {
 		dDao.deleteById(driverId);
 		return dDao.findAll();
 	}
-	 
-	
+
 }

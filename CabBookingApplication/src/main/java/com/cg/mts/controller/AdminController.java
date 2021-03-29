@@ -30,52 +30,51 @@ public class AdminController {
 
 	@Autowired
 	IAdminService ias;
-	
+
 	@Autowired
 	LoginService ls;
-	
+
 	@Autowired
 	ICustomerService cusService;
-	 
+
 	@PostMapping("/login")
-	public String validateAdmin(@RequestBody Admin admin)throws InvalidUserOrPasswordException {
+	public String validateAdmin(@RequestBody Admin admin) throws InvalidUserOrPasswordException {
 		String response;
 		try {
 			response = ls.validateCredentials(admin);
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			throw new InvalidUserOrPasswordException("Invalid Username/Password");
 		}
 		return response;
 	}
-	
+
 	@GetMapping
-	public List<Admin> viewALlAdmin(){
+	public List<Admin> viewALlAdmin() {
 		return ias.viewALlAdmin();
 	}
-	
+
 	@PostMapping
 	public Admin insertAdmin(@RequestBody Admin admin) {
 		return ias.insertAdmin(admin);
 	}
-	
+
 	@DeleteMapping("/{adminId}")
 	public List<Admin> deleteAdmin(@PathVariable int adminId) throws AdminNotFoundException {
 		List<Admin> s = null;
 		try {
 			s = ias.deleteAdmin(adminId);
-			
+
 		} catch (Exception e) {
-			throw new AdminNotFoundException("Admin with given ID: "+adminId+" Not Found to Delete");
+			throw new AdminNotFoundException("Admin with given ID: " + adminId + " Not Found to Delete");
 		}
 		return s;
-		
+
 	}
-	
+
 	@PutMapping
 	public Admin updateAdmin(@RequestBody Admin admin) throws AdminNotFoundException {
 		Admin a = null;
-	 
+
 		try {
 			a = ias.getAdminById(admin.getAdminId());
 			ias.updateAdmin(admin);
@@ -84,29 +83,31 @@ public class AdminController {
 		}
 		return a;
 	}
+
 	@GetMapping("/{adminId}")
 	public Admin GetAdminById(@PathVariable int adminId) throws AdminNotFoundException {
 		Admin a = null;
-		 
+
 		try {
 			a = ias.getAdminById(adminId);
-			 
+
 		} catch (Exception e) {
-			throw new AdminNotFoundException("Admin with ID: "+adminId+" not found!");
+			throw new AdminNotFoundException("Admin with ID: " + adminId + " not found!");
 		}
 		return a;
 	}
-	
+
+	@SuppressWarnings("unused")
 	@GetMapping("/alltrips/{customerId}")
 	public List<TripBooking> getAllTrips(@PathVariable int customerId) throws CustomerNotFoundException {
-		
+
 		Customer c = null;
-		List<TripBooking> t=null;
+		List<TripBooking> t = null;
 		try {
 			c = cusService.viewCustomer(customerId);
 			t = ias.getAllTrips(customerId);
 		} catch (Exception e) {
-			throw new CustomerNotFoundException("Can not find trips of Customer ID: "+customerId);
+			throw new CustomerNotFoundException("Can not find trips of Customer ID: " + customerId);
 		}
 		return t;
 	}
@@ -127,8 +128,11 @@ public class AdminController {
 	}
 
 	@GetMapping("fordays/{customerId}/{fromDate}/{toDate}")
-	public List<TripBooking> getAllTripsForDays(@PathVariable("customerId") int customerId, @PathVariable("fromDate")  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime fromDate,@PathVariable("toDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime toDate) throws CustomerNotFoundException {
+	public List<TripBooking> getAllTripsForDays(@PathVariable("customerId") int customerId,
+			@PathVariable("fromDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime fromDate,
+			@PathVariable("toDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime toDate)
+			throws CustomerNotFoundException {
 		return ias.getAllTripsForDays(customerId, fromDate, toDate);
 	}
-	
+
 }

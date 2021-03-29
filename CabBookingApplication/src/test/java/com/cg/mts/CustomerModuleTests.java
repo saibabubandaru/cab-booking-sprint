@@ -1,0 +1,71 @@
+package com.cg.mts;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import com.cg.mts.entities.Customer;
+
+@SpringBootTest
+@TestInstance(Lifecycle.PER_CLASS)
+class CustomerModuleTests extends AbstractTest {
+
+	@Override
+	@BeforeAll
+	public void setUp() {
+		super.setUp();
+	}
+
+	@Test
+	public void getStausCode() throws Exception {
+		String uri = "/customer/1";
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)).andReturn();
+		int status = mvcResult.getResponse().getStatus();
+		assertEquals(200, status);
+	}
+
+	@Test
+	public void getUsername() throws Exception {
+		String uri = "/customer/1";
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)).andReturn();
+		int status = mvcResult.getResponse().getStatus();
+		assertEquals(200, status);
+		String content = mvcResult.getResponse().getContentAsString();
+		Customer customer = super.mapFromJson(content, Customer.class);
+		assertEquals("shadow007", customer.getUsername());
+
+	}
+	
+	@Test
+	public void updateCustomer() throws Exception {
+
+		String uri = "/customer/1";
+		String putUri = "/customer";
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)).andReturn();
+		int status = mvcResult.getResponse().getStatus();
+		assertEquals(200, status);
+		String content = mvcResult.getResponse().getContentAsString();
+		Customer customer = super.mapFromJson(content, Customer.class);
+		customer.setEmail("updatedMail@gm.com");
+		String inputJson = super.mapToJson(customer);
+		MvcResult mvcResultt = mvc
+				.perform(MockMvcRequestBuilders.put(putUri).contentType(MediaType.APPLICATION_JSON).content(inputJson))
+				.andReturn();
+
+		int postStatus = mvcResultt.getResponse().getStatus();
+		assertEquals(200, postStatus);
+
+		String responseContent = mvcResultt.getResponse().getContentAsString();
+		Customer c = super.mapFromJson(responseContent, Customer.class);
+		assertEquals("updatedMail@gm.com", c.getCustomerId());
+
+	}
+
+}

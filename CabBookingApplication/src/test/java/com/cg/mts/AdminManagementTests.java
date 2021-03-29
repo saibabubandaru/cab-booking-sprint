@@ -70,7 +70,7 @@ public class AdminManagementTests extends AbstractTest {
 
 	}
 	
-
+	
 	@Test
 	public void updateAdmin() throws Exception {
 		String uri = "/admin/2";
@@ -83,7 +83,7 @@ public class AdminManagementTests extends AbstractTest {
 		admin.setEmail("updatedEmail.com");
 		String inputJson = super.mapToJson(admin);
 		MvcResult mvcResultt = mvc.perform(
-				MockMvcRequestBuilders.post(uriPost).contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson))
+				MockMvcRequestBuilders.put(uriPost).contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson))
 				.andReturn();
 		int postStatus = mvcResultt.getResponse().getStatus();
 		assertEquals(200, postStatus);

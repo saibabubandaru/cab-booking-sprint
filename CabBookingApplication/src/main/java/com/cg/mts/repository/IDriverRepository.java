@@ -10,6 +10,6 @@ import com.cg.mts.entities.Driver;
 import com.cg.mts.exception.DriverNotFoundException;
 
 @Repository("dDao")
-public interface IDriverRepository extends IDriverDao,JpaRepository<Driver, Integer>{
-	
+public interface IDriverRepository extends IDriverDao, JpaRepository<Driver, Integer> {
+
 }

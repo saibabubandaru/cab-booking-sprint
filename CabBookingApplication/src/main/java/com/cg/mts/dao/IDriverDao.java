@@ -8,6 +8,4 @@ import com.cg.mts.exception.DriverNotFoundException;
 
 public interface IDriverDao {
 
-	
-
 }
