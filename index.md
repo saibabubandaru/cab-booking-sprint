@@ -1,5 +1,6 @@
-# 🚕 Cab Booking Application
+# 🚕 Welcome to Cab Booking Application
 
+![bitmoji](https://sdk.bitmoji.com/render/panel/192d631c-0d66-4d06-a2c7-01347e2a4609-d75df9f5-6562-486f-8f69-5ac0dbc277cf-v1.png?transparent=1&palette=1&width=246)
 ## Tasks
 
 - [x] Build Pojo Classes
