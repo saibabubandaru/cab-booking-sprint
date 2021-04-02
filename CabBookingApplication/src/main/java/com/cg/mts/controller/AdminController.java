@@ -53,6 +53,7 @@ public class AdminController {
 		}
 		return response;
 	}
+
 	/**
 	 * 
 	 * @return List<Admin>
@@ -62,6 +63,7 @@ public class AdminController {
 	public List<Admin> viewALlAdmin() {
 		return ias.viewALlAdmin();
 	}
+
 	/**
 	 * 
 	 * @param admin
@@ -72,7 +74,7 @@ public class AdminController {
 	public Admin insertAdmin(@RequestBody Admin admin) {
 		return ias.insertAdmin(admin);
 	}
-	
+
 	/**
 	 * 
 	 * @param adminId
@@ -92,6 +94,7 @@ public class AdminController {
 		return s;
 
 	}
+
 	/**
 	 * 
 	 * @param admin
@@ -130,6 +133,7 @@ public class AdminController {
 		}
 		return a;
 	}
+
 	/**
 	 * 
 	 * @param customerId
@@ -151,6 +155,7 @@ public class AdminController {
 		}
 		return t;
 	}
+
 	/**
 	 * 
 	 * @return List<TripBooking>
@@ -160,6 +165,7 @@ public class AdminController {
 	public List<TripBooking> getTripsCabwise() {
 		return ias.getTripsCabwise();
 	}
+
 	/**
 	 * 
 	 * @return List<TripBooking>
@@ -169,16 +175,17 @@ public class AdminController {
 	public List<TripBooking> getTripsCustomerwise() {
 		return ias.getTripsCustomerwise();
 	}
-	
+
 	/**
 	 * 
-	 * @return List<TripBooking> 
+	 * @return List<TripBooking>
 	 */
 
 	@GetMapping("/datewise")
 	public List<TripBooking> getTripsDatewise() {
 		return ias.getTripsDatewise();
 	}
+
 	/**
 	 * 
 	 * @param customerId

@@ -24,117 +24,121 @@ public class DriverController {
 
 	@Autowired
 	IDriverService ids;
-	
+
 	@Autowired
 	LoginService ls;
+
 	/**
 	 * 
 	 * @param driver
 	 * @return String
 	 * @throws InvalidUserOrPasswordException
 	 */
-	
+
 	@PostMapping("/login")
 	public String validateDriver(@RequestBody Driver driver) throws InvalidUserOrPasswordException {
 		String response;
 		try {
 			response = ls.validateCredintials(driver);
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			throw new InvalidUserOrPasswordException("Invalid Username/Password");
 		}
 		return response;
 	}
+
 	/**
 	 * 
 	 * @return List<Driver>
 	 */
-	
+
 	@GetMapping
-	public List<Driver> displayAllDrivers(){
+	public List<Driver> displayAllDrivers() {
 		return ids.displayAllDriver();
 	}
+
 	/**
 	 * 
 	 * @param driverId
 	 * @return Driver
 	 * @throws DriverNotFoundException
 	 */
-	
+
 	@GetMapping("/{driverId}")
 	public Driver viewDriver(@PathVariable int driverId) throws DriverNotFoundException {
 		Driver driver = null;
 		try {
 			driver = ids.viewDriver(driverId);
-			
+
 		} catch (Exception e) {
-			throw new DriverNotFoundException("Driver with Id: "+driverId+" Not Found!");
+			throw new DriverNotFoundException("Driver with Id: " + driverId + " Not Found!");
 		}
 		return driver;
 	}
-	
+
 	/**
-	 *  
+	 * 
 	 * @return List<Driver>
 	 * @throws DriverNotFoundException
 	 */
-	
+
 	@GetMapping("/bestdrivers")
 	public List<Driver> viewBestDrivers() throws DriverNotFoundException {
 		List<Driver> lis = null;
 		try {
-			lis= ids.viewBestDrivers();
+			lis = ids.viewBestDrivers();
 		} catch (Exception e) {
 			throw new DriverNotFoundException("Best Drivers List is Empty");
 		}
 		return lis;
 	}
+
 	/**
 	 * 
 	 * @param driver
 	 * @return List<Driver>
 	 */
-	
+
 	@PostMapping
-	public List<Driver> insertDriver(@RequestBody Driver driver){
+	public List<Driver> insertDriver(@RequestBody Driver driver) {
 		return ids.insertDriver(driver);
 	}
+
 	/**
 	 * 
 	 * @param driver
-	 * @return Driver 
+	 * @return Driver
 	 * @throws DriverNotFoundException
 	 */
 	@SuppressWarnings("unused")
 	@PutMapping
 	public Driver updateDriver(@RequestBody Driver driver) throws DriverNotFoundException {
 		Driver driverCheck = null;
-		Driver d =null;
+		Driver d = null;
 		try {
-			driverCheck=viewDriver(driver.getDriverId());
-			d=ids.updateDriver(driver);
+			driverCheck = viewDriver(driver.getDriverId());
+			d = ids.updateDriver(driver);
 		} catch (Exception e) {
-			throw new DriverNotFoundException("Driver with Id: "+driver.getDriverId()+" Not Found to Update!");
+			throw new DriverNotFoundException("Driver with Id: " + driver.getDriverId() + " Not Found to Update!");
 		}
 		return d;
 	}
+
 	/**
 	 * 
 	 * @param driverId
 	 * @return List<Driver>
 	 * @throws DriverNotFoundException
 	 */
-	
+
 	@DeleteMapping("/{driverId}")
 	public List<Driver> deleteDriver(@PathVariable int driverId) throws DriverNotFoundException {
-		 List<Driver>  d = null;
+		List<Driver> d = null;
 		try {
 			d = ids.deleteDriver(driverId);
 		} catch (Exception e) {
-			 throw new DriverNotFoundException("Driver with Id: "+driverId+" Not FOund To Delete!");
+			throw new DriverNotFoundException("Driver with Id: " + driverId + " Not FOund To Delete!");
 		}
 		return d;
 	}
 
-	
 }

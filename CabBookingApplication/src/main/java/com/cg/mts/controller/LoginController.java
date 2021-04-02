@@ -28,14 +28,15 @@ public class LoginController {
 
 			return lServiceImpl.validateCredintials(customer);
 		} catch (Exception e) {
-			 throw new InvalidUserOrPasswordException("Invalid Login/Password");
+			throw new InvalidUserOrPasswordException("Invalid Login/Password");
 		}
 
 	}
 
 	@GetMapping("/admin/{username}/{password}")
-	public String adminLogin(@PathVariable("username") String username, @PathVariable("password") String password) throws InvalidUserOrPasswordException{
-	
+	public String adminLogin(@PathVariable("username") String username, @PathVariable("password") String password)
+			throws InvalidUserOrPasswordException {
+
 		try {
 			Admin admin = new Admin();
 			admin.setUsername(username);
@@ -44,12 +45,12 @@ public class LoginController {
 		} catch (Exception e) {
 			throw new InvalidUserOrPasswordException("Invalid Login/Password");
 		}
-	
 
 	}
 
 	@GetMapping("/driver/{username}/{password}")
-	public String driverLogin(@PathVariable("username") String username, @PathVariable("password") String password) throws InvalidUserOrPasswordException {
+	public String driverLogin(@PathVariable("username") String username, @PathVariable("password") String password)
+			throws InvalidUserOrPasswordException {
 
 		try {
 			Driver driver = new Driver();
@@ -59,7 +60,6 @@ public class LoginController {
 		} catch (Exception e) {
 			throw new InvalidUserOrPasswordException("Invalid Login/Password");
 		}
-	
 
 	}
 }

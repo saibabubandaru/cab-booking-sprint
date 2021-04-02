@@ -18,9 +18,11 @@ public class ITripBookingDaoImpl implements ITripBookingDao {
 
 	@PersistenceContext
 	EntityManager em;
+
 	/**
 	 * /**
-	 * @param  customerId
+	 * 
+	 * @param customerId
 	 * @return List<TripBooking>
 	 * 
 	 */
@@ -54,9 +56,10 @@ public class ITripBookingDaoImpl implements ITripBookingDao {
 	 */
 	@Override
 	public List<TripBooking> viewAllTripsById(int tripbookingId) {
-		TypedQuery<TripBooking> q=em.createQuery("select tb from TripBooking tb where tb.tripBookingId=:tripId",TripBooking.class);
+		TypedQuery<TripBooking> q = em.createQuery("select tb from TripBooking tb where tb.tripBookingId=:tripId",
+				TripBooking.class);
 		q.setParameter("tripId", tripbookingId);
-		List<TripBooking> result=q.getResultList();
+		List<TripBooking> result = q.getResultList();
 		return result;
 	}
 

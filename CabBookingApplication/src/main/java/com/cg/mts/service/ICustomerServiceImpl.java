@@ -13,6 +13,7 @@ public class ICustomerServiceImpl implements ICustomerService {
 
 	@Autowired
 	ICustomerRepository cDao;
+
 	/**
 	 * @param customer
 	 * @return Customer
@@ -23,6 +24,7 @@ public class ICustomerServiceImpl implements ICustomerService {
 		cDao.saveAndFlush(customer);
 		return customer;
 	}
+
 	/**
 	 * @param customer
 	 * @return Customer
@@ -40,6 +42,7 @@ public class ICustomerServiceImpl implements ICustomerService {
 		}
 		return cus;
 	}
+
 	/**
 	 * @param customer
 	 * @return Customer
@@ -49,8 +52,9 @@ public class ICustomerServiceImpl implements ICustomerService {
 		cDao.delete(customer);
 		return customer;
 	}
+
 	/**
-	 
+	 * 
 	 * @return List<Customer>
 	 */
 
@@ -59,6 +63,7 @@ public class ICustomerServiceImpl implements ICustomerService {
 
 		return cDao.findAll();
 	}
+
 	/**
 	 * @param customerId
 	 * @return Customer

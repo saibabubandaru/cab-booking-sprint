@@ -42,7 +42,7 @@ class CustomerModuleTests extends AbstractTest {
 		assertEquals("shadow007", customer.getUsername());
 
 	}
-	
+
 	@Test
 	public void updateCustomer() throws Exception {
 

@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)
-class DriverModuleTests extends AbstractTest{
+class DriverModuleTests extends AbstractTest {
 
 	@Override
 	@BeforeAll

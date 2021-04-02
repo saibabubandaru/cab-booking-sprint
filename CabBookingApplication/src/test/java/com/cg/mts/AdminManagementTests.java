@@ -17,14 +17,13 @@ import com.cg.mts.entities.Admin;
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)
 public class AdminManagementTests extends AbstractTest {
- 
+
 	@Override
 	@BeforeAll
 	public void setUp() {
 		super.setUp();
 	}
 
-	
 	@Test
 	public void getAdminUsername() throws Exception {
 		String uri = "/admin/2";
@@ -36,7 +35,6 @@ public class AdminManagementTests extends AbstractTest {
 		assertEquals("admin1", admin.getUsername());
 	}
 
-	
 	@Test
 	public void getStausCode() throws Exception {
 		String uri = "/admin";
@@ -45,7 +43,6 @@ public class AdminManagementTests extends AbstractTest {
 		assertEquals(200, status);
 	}
 
-	
 	@Test
 	public void createAdmin() throws Exception {
 		String uri = "/admin";
@@ -67,8 +64,7 @@ public class AdminManagementTests extends AbstractTest {
 		assertEquals("creator@cab.in", a.getEmail());
 
 	}
-	
-	
+
 	@Test
 	public void updateAdmin() throws Exception {
 		String uri = "/admin/2";
@@ -91,7 +87,6 @@ public class AdminManagementTests extends AbstractTest {
 
 	}
 
-	
 	@Test
 	public void deleteAdmin() throws Exception {
 

@@ -18,6 +18,7 @@ public class ICabDaoImpl implements ICabDao {
 
 	@PersistenceContext
 	EntityManager em;
+
 	/**
 	 * @param carType
 	 * @return List<cab>
@@ -31,12 +32,12 @@ public class ICabDaoImpl implements ICabDao {
 
 		return q.getResultList();
 	}
+
 	/**
 	 * @param carType
 	 * @return integer
 	 * @throws CabNotFoundException
 	 */
-	
 
 	@Override
 	public int countCabsOfType(String carType) throws CabNotFoundException {

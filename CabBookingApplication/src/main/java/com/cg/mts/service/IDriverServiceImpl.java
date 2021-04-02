@@ -14,14 +14,16 @@ import com.cg.mts.repository.IDriverRepository;
 public class IDriverServiceImpl implements IDriverService {
 	@Autowired
 	IDriverRepository dDao;
+
 	/**
 	 * 
-	 * @return List<Driver> 
+	 * @return List<Driver>
 	 */
 	@Override
 	public List<Driver> displayAllDriver() {
 		return dDao.findAll();
 	}
+
 	/**
 	 * @param driverId
 	 * @return Driver
@@ -32,6 +34,7 @@ public class IDriverServiceImpl implements IDriverService {
 	public Driver viewDriver(int driverId) throws DriverNotFoundException {
 		return dDao.findById(driverId).get();
 	}
+
 	/**
 	 * @return List<Driver>
 	 * @throws DriverNotFoundException
@@ -42,8 +45,9 @@ public class IDriverServiceImpl implements IDriverService {
 		List<Driver> bestDrivers = dDao.findAll();
 		return bestDrivers.stream().filter((d) -> d.getRating() >= 4.5).collect(Collectors.toList());
 	}
+
 	/**
-	 * @param driver 
+	 * @param driver
 	 * @return List<Driver>
 	 */
 
@@ -52,6 +56,7 @@ public class IDriverServiceImpl implements IDriverService {
 		dDao.saveAndFlush(driver);
 		return dDao.findAll();
 	}
+
 	/**
 	 * @return Driver
 	 * @param driver
@@ -62,6 +67,7 @@ public class IDriverServiceImpl implements IDriverService {
 	public Driver updateDriver(Driver driver) throws DriverNotFoundException {
 		return dDao.saveAndFlush(driver);
 	}
+
 	/**
 	 * @param driverId
 	 * @return List<Driver>

@@ -27,11 +27,11 @@ public class CabController {
 	 * @param cab
 	 * @return Cab
 	 */
-	
-	
+
 	public Cab insertCab(@RequestBody Cab cab) {
 		return iCabService.insertCab(cab);
 	}
+
 	/**
 	 * 
 	 * @param cab
@@ -52,6 +52,7 @@ public class CabController {
 		}
 		return c;
 	}
+
 	/**
 	 * 
 	 * @param cab
@@ -72,6 +73,7 @@ public class CabController {
 		}
 		return c;
 	}
+
 	/**
 	 * 
 	 * @param carType
@@ -82,6 +84,7 @@ public class CabController {
 	public List<Cab> viewCabsOfType(String carType) {
 		return iCabService.viewCabsOfType(carType);
 	}
+
 	/**
 	 * 
 	 * @param carType

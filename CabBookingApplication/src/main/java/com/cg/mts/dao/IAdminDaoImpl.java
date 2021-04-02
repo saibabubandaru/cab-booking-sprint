@@ -16,57 +16,64 @@ import com.cg.mts.exception.CustomerNotFoundException;
 
 @Repository
 @Transactional
-public class IAdminDaoImpl implements IAdminDao{
+public class IAdminDaoImpl implements IAdminDao {
 
 	@PersistenceContext
 	EntityManager em;
+
 	/**
 	 * @return List<TripBooking>
 	 * @param customerId
 	 * @throws CustomerNotFoundException
 	 */
-	
-	
+
 	public List<TripBooking> getAllTrips(int customerId) throws CustomerNotFoundException {
-		TypedQuery<TripBooking> q = em.createQuery("select tb from TripBooking tb where tb.customer.customerId=:cId",TripBooking.class);
+		TypedQuery<TripBooking> q = em.createQuery("select tb from TripBooking tb where tb.customer.customerId=:cId",
+				TripBooking.class);
 		q.setParameter("cId", customerId);
 		List<TripBooking> result = q.getResultList();
 		return result;
 	}
+
 	/**
 	 * @return List<TripBooking>
 	 */
-	
 
 	@Override
 	public List<TripBooking> getTripsCabwise() {
-		TypedQuery<TripBooking> q = em.createQuery("select tb from TripBooking tb",TripBooking.class);
+		TypedQuery<TripBooking> q = em.createQuery("select tb from TripBooking tb", TripBooking.class);
 		List<TripBooking> trips = q.getResultList();
-		trips = trips.stream().sorted((a,b)->a.getDriver().getCab().getCabId()-b.getDriver().getCab().getCabId()).collect(Collectors.toList());
+		trips = trips.stream().sorted((a, b) -> a.getDriver().getCab().getCabId() - b.getDriver().getCab().getCabId())
+				.collect(Collectors.toList());
 		return trips;
 	}
+
 	/**
 	 * @param List<TripBooking>
 	 */
 
 	@Override
 	public List<TripBooking> getTripsCustomerwise() {
-		TypedQuery<TripBooking> q = em.createQuery("select tb from TripBooking tb",TripBooking.class);
+		TypedQuery<TripBooking> q = em.createQuery("select tb from TripBooking tb", TripBooking.class);
 		List<TripBooking> trips = q.getResultList();
-		trips = trips.stream().sorted((a,b)->a.getCustomer().getCustomerId()-b.getCustomer().getCustomerId()).collect(Collectors.toList());
+		trips = trips.stream().sorted((a, b) -> a.getCustomer().getCustomerId() - b.getCustomer().getCustomerId())
+				.collect(Collectors.toList());
 		return trips;
 	}
+
 	/**
 	 * @param List<TripBooking>
 	 */
 
 	@Override
 	public List<TripBooking> getTripsDatewise() {
-		TypedQuery<TripBooking> q = em.createQuery("select tb from TripBooking tb",TripBooking.class);
+		TypedQuery<TripBooking> q = em.createQuery("select tb from TripBooking tb", TripBooking.class);
 		List<TripBooking> trips = q.getResultList();
-		trips = trips.stream().sorted((a,b)->a.getFromDateTime().compareTo(b.getFromDateTime())).collect(Collectors.toList());
+		trips = trips.stream().sorted((a, b) -> a.getFromDateTime().compareTo(b.getFromDateTime()))
+				.collect(Collectors.toList());
 		return trips;
 	}
+
 	/**
 	 * 
 	 * @param customerId
@@ -79,13 +86,14 @@ public class IAdminDaoImpl implements IAdminDao{
 	@Override
 	public List<TripBooking> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime toDate)
 			throws CustomerNotFoundException {
-		TypedQuery<TripBooking> q = em.createQuery("select tb from TripBooking tb where tb.customer.customerId=:cId and tb.fromDateTime between :start and :end",TripBooking.class);
+		TypedQuery<TripBooking> q = em.createQuery(
+				"select tb from TripBooking tb where tb.customer.customerId=:cId and tb.fromDateTime between :start and :end",
+				TripBooking.class);
 		q.setParameter("cId", customerId);
 		q.setParameter("start", fromDate);
 		q.setParameter("end", toDate);
 		List<TripBooking> trips = q.getResultList();
 		return trips;
 	}
-
 
 }

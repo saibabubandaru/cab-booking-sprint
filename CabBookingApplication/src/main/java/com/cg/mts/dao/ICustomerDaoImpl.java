@@ -1,5 +1,5 @@
 package com.cg.mts.dao;
 
-public class ICustomerDaoImpl implements ICustomerDao{
+public class ICustomerDaoImpl implements ICustomerDao {
 
 }
