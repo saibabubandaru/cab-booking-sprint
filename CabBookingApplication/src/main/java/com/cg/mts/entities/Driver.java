@@ -1,16 +1,11 @@
 package com.cg.mts.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 
 @Entity
 public class Driver extends AbstractUser {
@@ -18,10 +13,10 @@ public class Driver extends AbstractUser {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int driverId;
 	private String licenseNo;
-	
+
 	@OneToOne(fetch = FetchType.LAZY)
 	private Cab cab;
-	
+
 	private float rating;
 
 	public Driver() {

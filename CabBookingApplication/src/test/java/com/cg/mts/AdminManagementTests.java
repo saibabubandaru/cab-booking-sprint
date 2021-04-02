@@ -3,8 +3,6 @@ package com.cg.mts;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -19,14 +17,13 @@ import com.cg.mts.entities.Admin;
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)
 public class AdminManagementTests extends AbstractTest {
- 
+
 	@Override
 	@BeforeAll
 	public void setUp() {
 		super.setUp();
 	}
 
-	
 	@Test
 	public void getAdminUsername() throws Exception {
 		String uri = "/admin/2";
@@ -38,7 +35,6 @@ public class AdminManagementTests extends AbstractTest {
 		assertEquals("admin1", admin.getUsername());
 	}
 
-	
 	@Test
 	public void getStausCode() throws Exception {
 		String uri = "/admin";
@@ -47,7 +43,6 @@ public class AdminManagementTests extends AbstractTest {
 		assertEquals(200, status);
 	}
 
-	
 	@Test
 	public void createAdmin() throws Exception {
 		String uri = "/admin";
@@ -69,7 +64,6 @@ public class AdminManagementTests extends AbstractTest {
 		assertEquals("creator@cab.in", a.getEmail());
 
 	}
-	
 
 	@Test
 	public void updateAdmin() throws Exception {
@@ -83,7 +77,7 @@ public class AdminManagementTests extends AbstractTest {
 		admin.setEmail("updatedEmail.com");
 		String inputJson = super.mapToJson(admin);
 		MvcResult mvcResultt = mvc.perform(
-				MockMvcRequestBuilders.post(uriPost).contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson))
+				MockMvcRequestBuilders.put(uriPost).contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson))
 				.andReturn();
 		int postStatus = mvcResultt.getResponse().getStatus();
 		assertEquals(200, postStatus);
@@ -93,7 +87,6 @@ public class AdminManagementTests extends AbstractTest {
 
 	}
 
-	
 	@Test
 	public void deleteAdmin() throws Exception {
 

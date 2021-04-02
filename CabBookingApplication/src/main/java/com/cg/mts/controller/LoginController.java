@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.mts.entities.Admin;
 import com.cg.mts.entities.Customer;
 import com.cg.mts.entities.Driver;
+import com.cg.mts.exception.InvalidUserOrPasswordException;
 import com.cg.mts.util.LoginServiceImpl;
 
 @RestController
@@ -18,31 +19,47 @@ public class LoginController {
 	LoginServiceImpl lServiceImpl;
 
 	@GetMapping("/customer/{username}/{password}")
-	public String customerLogin(@PathVariable("username") String username, @PathVariable("password") String password) {
+	public String customerLogin(@PathVariable("username") String username, @PathVariable("password") String password)
+			throws InvalidUserOrPasswordException {
+		try {
+			Customer customer = new Customer();
+			customer.setUsername(username);
+			customer.setPassword(password);
 
-		Customer customer = new Customer();
-		customer.setUsername(username);
-		customer.setPassword(password);
+			return lServiceImpl.validateCredintials(customer);
+		} catch (Exception e) {
+			throw new InvalidUserOrPasswordException("Invalid Login/Password");
+		}
 
-		return lServiceImpl.validateCredentials(customer);
 	}
 
 	@GetMapping("/admin/{username}/{password}")
-	public String adminLogin(@PathVariable("username") String username, @PathVariable("password") String password) {
-		Admin admin = new Admin();
-		admin.setUsername(username);
-		admin.setPassword(password);
-		return lServiceImpl.validateCredentials(admin);
+	public String adminLogin(@PathVariable("username") String username, @PathVariable("password") String password)
+			throws InvalidUserOrPasswordException {
+
+		try {
+			Admin admin = new Admin();
+			admin.setUsername(username);
+			admin.setPassword(password);
+			return lServiceImpl.validateCredintials(admin);
+		} catch (Exception e) {
+			throw new InvalidUserOrPasswordException("Invalid Login/Password");
+		}
 
 	}
 
 	@GetMapping("/driver/{username}/{password}")
-	public String driverLogin(@PathVariable("username") String username, @PathVariable("password") String password) {
+	public String driverLogin(@PathVariable("username") String username, @PathVariable("password") String password)
+			throws InvalidUserOrPasswordException {
 
-		Driver driver = new Driver();
-		driver.setUsername(username);
-		driver.setPassword(password);
-		return lServiceImpl.validateCredentials(driver);
+		try {
+			Driver driver = new Driver();
+			driver.setUsername(username);
+			driver.setPassword(password);
+			return lServiceImpl.validateCredintials(driver);
+		} catch (Exception e) {
+			throw new InvalidUserOrPasswordException("Invalid Login/Password");
+		}
 
 	}
 }

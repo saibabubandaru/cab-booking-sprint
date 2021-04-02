@@ -33,7 +33,16 @@
 - [ ] Junit Testing
   - [x] Admin
   - [x] Cab
-  - [ ] Customer
-  - [ ] Trip
+  - [x] Customer
+  - [x] Trip
   - [ ] Driver
 - [ ] Log4j
+
+Contributors:
+<br>
+<p  align="center">
+<a href="https://github.com/shadow-prince/cab-booking-sprint/graphs/contributors">
+  <img  src="https://contrib.rocks/image?repo=shadow-prince/cab-booking-sprint" />
+</a>
+</p>
+

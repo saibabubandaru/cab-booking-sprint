@@ -10,17 +10,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Entity
 public class TripBooking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int tripBookingId;
-	@ManyToOne(targetEntity = Customer.class,fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	@JoinColumn(name = "customerId",referencedColumnName = "customerId")
+	@ManyToOne(targetEntity = Customer.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "customerId", referencedColumnName = "customerId")
 	private Customer customer;
-	@ManyToOne(targetEntity = Driver.class,fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = Driver.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "driverId", referencedColumnName = "driverId")
 	private Driver driver;
 	private String fromLocation;
@@ -29,10 +28,26 @@ public class TripBooking {
 	private LocalDateTime toDateTime;
 	private boolean status;
 	private float distanceInKm;
+
 	private float bill;
-	
+
 	public TripBooking() {
-		
+
+	}
+
+	public TripBooking(int tripBookingId, Customer customer, Driver driver, String fromLocation, String toLocation,
+			LocalDateTime fromDateTime, LocalDateTime toDateTime, boolean status, float distanceInKm, float bill) {
+		super();
+		this.tripBookingId = tripBookingId;
+		this.customer = customer;
+		this.driver = driver;
+		this.fromLocation = fromLocation;
+		this.toLocation = toLocation;
+		this.fromDateTime = fromDateTime;
+		this.toDateTime = toDateTime;
+		this.status = status;
+		this.distanceInKm = distanceInKm;
+		this.bill = bill;
 	}
 
 	public int getTripBookingId() {

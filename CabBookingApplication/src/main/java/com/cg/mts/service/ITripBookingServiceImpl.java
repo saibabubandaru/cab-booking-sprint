@@ -13,7 +13,7 @@ public class ITripBookingServiceImpl implements ITripBookingService {
 
 	@Autowired
 	ITripBookingRepository tbDao;
-	
+
 	@Override
 	public TripBooking insertTripBooking(TripBooking tripBooking) {
 		tbDao.saveAndFlush(tripBooking);
@@ -31,16 +31,20 @@ public class ITripBookingServiceImpl implements ITripBookingService {
 		return tbDao.findAll();
 	}
 
-	
 	@Override
 	public List<TripBooking> viewAllTripsCustomer(int customerId) {
 		return tbDao.viewAllTripsCustomer(customerId);
 	}
 
-	
 	@Override
 	public float calculateBill(int customerId) {
 		return tbDao.calculateBill(customerId);
+	}
+
+	@Override
+	public List<TripBooking> viewAllTripsById(int tripbookingId) {
+		// TODO Auto-generated method stub
+		return tbDao.viewAllTripsById(tripbookingId);
 	}
 
 }
