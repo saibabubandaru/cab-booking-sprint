@@ -33,7 +33,7 @@
 - [ ] Junit Testing
   - [x] Admin
   - [x] Cab
-  - [ ] Customer
-  - [ ] Trip
+  - [x] Customer
+  - [x] Trip
   - [ ] Driver
 - [ ] Log4j
