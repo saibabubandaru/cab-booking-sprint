@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -19,6 +18,11 @@ public class ICabDaoImpl implements ICabDao {
 
 	@PersistenceContext
 	EntityManager em;
+	/**
+	 * @param carType
+	 * @return List<cab>
+	 * @throws CabNotFoundException
+	 */
 
 	@Override
 	public List<Cab> viewCabsOfType(String carType) throws CabNotFoundException {
@@ -27,6 +31,12 @@ public class ICabDaoImpl implements ICabDao {
 
 		return q.getResultList();
 	}
+	/**
+	 * @param carType
+	 * @return integer
+	 * @throws CabNotFoundException
+	 */
+	
 
 	@Override
 	public int countCabsOfType(String carType) throws CabNotFoundException {

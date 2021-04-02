@@ -3,7 +3,6 @@ package com.cg.mts.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.cg.mts.entities.Customer;
@@ -14,12 +13,20 @@ public class ICustomerServiceImpl implements ICustomerService {
 
 	@Autowired
 	ICustomerRepository cDao;
+	/**
+	 * @param customer
+	 * @return Customer
+	 */
 
 	@Override
 	public Customer insertCustomer(Customer customer) {
 		cDao.saveAndFlush(customer);
 		return customer;
 	}
+	/**
+	 * @param customer
+	 * @return Customer
+	 */
 
 	@Override
 	public Customer updateCustomer(Customer customer) {
@@ -33,18 +40,29 @@ public class ICustomerServiceImpl implements ICustomerService {
 		}
 		return cus;
 	}
-
+	/**
+	 * @param customer
+	 * @return Customer
+	 */
 	@Override
 	public Customer deleteCustomer(Customer customer) {
 		cDao.delete(customer);
 		return customer;
 	}
+	/**
+	 
+	 * @return List<Customer>
+	 */
 
 	@Override
 	public List<Customer> viewCustomers() {
 
 		return cDao.findAll();
 	}
+	/**
+	 * @param customerId
+	 * @return Customer
+	 */
 
 	@Override
 	public Customer viewCustomer(int customerId) {

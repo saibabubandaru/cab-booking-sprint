@@ -1,12 +1,9 @@
 package com.cg.mts.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cg.mts.dao.ICabDao;
 import com.cg.mts.entities.Cab;
-import com.cg.mts.exception.CabNotFoundException;
 
 public interface ICabRepository extends ICabDao, JpaRepository<Cab, Integer> {
 	/*

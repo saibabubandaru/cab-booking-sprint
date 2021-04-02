@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.mts.entities.Customer;
-import com.cg.mts.entities.Driver;
 import com.cg.mts.exception.CustomerNotFoundException;
 import com.cg.mts.exception.InvalidUserOrPasswordException;
 import com.cg.mts.service.ICustomerService;
@@ -27,24 +26,42 @@ public class CustomerController {
 	
 	@Autowired
 	LoginService ls;
+	/**
+	 * 
+	 * @param customer
+	 * @return String
+	 * @throws InvalidUserOrPasswordException
+	 */
 	
 	@PostMapping("/login")
 	public String validateCustomer(@RequestBody Customer customer)throws InvalidUserOrPasswordException {
 		String response;
 		try {
-			response = ls.validateCredentials(customer);
+			response = ls.validateCredintials(customer);
 		}
 		catch(Exception e) {
 			throw new InvalidUserOrPasswordException("Invalid Username/Password");
 		}
 		return response;
 	}
+	/**
+	 * 
+	 * @param customer
+	 * @return Customer
+	 */
 	 
 	@PostMapping
 	public Customer insertCustomer(Customer customer) {
 		return cusService.insertCustomer(customer);
 	}
+	/**
+	 * 
+	 * @param customer
+	 * @return Customer
+	 * @throws CustomerNotFoundException
+	 */
 
+	@SuppressWarnings("unused")
 	@PutMapping
 	public Customer updateCustomer(Customer customer) throws CustomerNotFoundException{
 		Customer cViewer = null;
@@ -57,7 +74,14 @@ public class CustomerController {
 		}
 		return c;
 	}
+	/**
+	 * 
+	 * @param customer
+	 * @return Customer
+	 * @throws CustomerNotFoundException
+	 */
 
+	@SuppressWarnings("unused")
 	@DeleteMapping
 	public Customer deleteCustomer(Customer customer) throws CustomerNotFoundException {
 		Customer cViewer = null;
@@ -70,12 +94,22 @@ public class CustomerController {
 		}
 		return c;
 	}
+	/**
+	 * 
+	 * @return List<Customer>
+	 */
 
 	
 	@GetMapping(value="all")
 	public List<Customer> viewCustomers() {
 		return cusService.viewCustomers();
 	}
+	/**
+	 * 
+	 * @param customerId
+	 * @return Customer
+	 * @throws CustomerNotFoundException
+	 */
 
 	@GetMapping(value = "/{customerId}")
 	public Customer viewCustomer(@PathVariable int customerId) throws CustomerNotFoundException {
@@ -87,6 +121,12 @@ public class CustomerController {
 		}
 		return c;
 	}
+	/**
+	 * 
+	 * @param username
+	 * @param password
+	 * @return Customer
+	 */
 
 	public Customer validateCustomer(String username, String password) {
 		return null;

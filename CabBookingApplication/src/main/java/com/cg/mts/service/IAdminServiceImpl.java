@@ -17,11 +17,19 @@ public class IAdminServiceImpl implements IAdminService {
 	@Autowired
 	IAdminRepository aDao;
 
+	/**
+	 * @return List<Admin>
+	 */
 	@Override
 	public List<Admin> viewALlAdmin() {
 
 		return aDao.findAll();
 	}
+
+	/**
+	 * @return Admin
+	 * @param admin
+	 */
 
 	@Override
 	public Admin insertAdmin(Admin admin) {
@@ -29,11 +37,21 @@ public class IAdminServiceImpl implements IAdminService {
 		return admin;
 	}
 
+	/**
+	 * @return Admin
+	 * @param admin
+	 */
+
 	@Override
 	public Admin updateAdmin(Admin admin) {
 		aDao.saveAndFlush(admin);
 		return admin;
 	}
+
+	/**
+	 * @return adminId
+	 * @param List<Admin>
+	 */
 
 	@Override
 	public List<Admin> deleteAdmin(int adminId) {
@@ -41,31 +59,64 @@ public class IAdminServiceImpl implements IAdminService {
 		return aDao.findAll();
 	}
 
+	/**
+	 * @return List<TripBooking>
+	 * @param customerId
+	 * @throws CustomerNotFoundException
+	 */
+
 	@Override
 	public List<TripBooking> getAllTrips(int customerId) throws CustomerNotFoundException {
 		return aDao.getAllTrips(customerId);
 	}
+
+	/**
+	 * @return List<TripBooking>
+	 */
 
 	@Override
 	public List<TripBooking> getTripsCabwise() {
 		return aDao.getTripsCabwise();
 	}
 
+	/**
+	 * @return List<TripBooking>
+	 */
+
 	@Override
 	public List<TripBooking> getTripsCustomerwise() {
 		return aDao.getTripsCustomerwise();
 	}
+
+	/**
+	 * @return List<TripBooking>
+	 */
 
 	@Override
 	public List<TripBooking> getTripsDatewise() {
 		return aDao.getTripsDatewise();
 	}
 
+	/**
+	 * @return List<TripBooking>
+	 * @param customerId
+	 * @param fromDate
+	 * @param toDate
+	 * @return List<TripBooking>
+	 * @throws CustomerNotFoundException
+	 */
+
 	@Override
 	public List<TripBooking> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime toDate)
 			throws CustomerNotFoundException {
 		return aDao.getAllTripsForDays(customerId, fromDate, toDate);
 	}
+
+	/**
+	 * @param adminId
+	 * @return Admin
+	 * @throws CustomerNotFoundException
+	 */
 
 	@Override
 	public Admin getAdminById(int adminId) {

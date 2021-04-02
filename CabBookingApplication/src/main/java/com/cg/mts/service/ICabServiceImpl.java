@@ -14,12 +14,20 @@ public class ICabServiceImpl implements ICabService {
 
 	@Autowired
 	ICabRepository cabDao;
+	/**
+	 * @param cab
+	 * @return Cab
+	 */
 
 	@Override
 	public Cab insertCab(Cab cab) {
 		cabDao.saveAndFlush(cab);
 		return cab;
 	}
+	/**
+	 * @param cab
+	 * @return Cab
+	 */
 
 	@Override
 	public Cab updateCab(Cab cab) {
@@ -31,13 +39,21 @@ public class ICabServiceImpl implements ICabService {
 		}
 		return tempCab;
 	}
+	/**
+	 * @param cab
+	 * @return Cab
+	*/
 
 	@Override
 	public Cab deleteCab(Cab cab) {
 		cabDao.delete(cab);
 		return cab;
 	}
-
+    /**
+	 * @param carType
+	 * @return List<Cab>
+	 */
+    
 	@Override
 	public List<Cab> viewCabsOfType(String carType) {
 
@@ -49,6 +65,10 @@ public class ICabServiceImpl implements ICabService {
 		}
 		return null;
 	}
+	/**
+	 * @param carType
+	 * @return integer
+	 */
 
 	@Override
 	public int countCabsOfType(String carType) {
@@ -61,6 +81,11 @@ public class ICabServiceImpl implements ICabService {
 		}
 		return 0;
 	}
+	
+	 /**
+	  * @param cabId
+	 * @return Cab
+	  */
 
 	@Override
 	public Cab getCabById(int cabID) {

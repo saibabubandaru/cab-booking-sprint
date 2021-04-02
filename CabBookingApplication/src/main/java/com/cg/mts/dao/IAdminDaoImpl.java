@@ -1,8 +1,6 @@
 package com.cg.mts.dao;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,12 +11,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import com.cg.mts.entities.Admin;
-
 import com.cg.mts.entities.TripBooking;
-
-import com.cg.mts.exception.AdminNotFoundException;
-
 import com.cg.mts.exception.CustomerNotFoundException;
 
 @Repository
@@ -27,14 +20,23 @@ public class IAdminDaoImpl implements IAdminDao{
 
 	@PersistenceContext
 	EntityManager em;
+	/**
+	 * @return List<TripBooking>
+	 * @param customerId
+	 * @throws CustomerNotFoundException
+	 */
 	
-	@Override
+	
 	public List<TripBooking> getAllTrips(int customerId) throws CustomerNotFoundException {
 		TypedQuery<TripBooking> q = em.createQuery("select tb from TripBooking tb where tb.customer.customerId=:cId",TripBooking.class);
 		q.setParameter("cId", customerId);
 		List<TripBooking> result = q.getResultList();
 		return result;
 	}
+	/**
+	 * @return List<TripBooking>
+	 */
+	
 
 	@Override
 	public List<TripBooking> getTripsCabwise() {
@@ -43,6 +45,9 @@ public class IAdminDaoImpl implements IAdminDao{
 		trips = trips.stream().sorted((a,b)->a.getDriver().getCab().getCabId()-b.getDriver().getCab().getCabId()).collect(Collectors.toList());
 		return trips;
 	}
+	/**
+	 * @param List<TripBooking>
+	 */
 
 	@Override
 	public List<TripBooking> getTripsCustomerwise() {
@@ -51,6 +56,9 @@ public class IAdminDaoImpl implements IAdminDao{
 		trips = trips.stream().sorted((a,b)->a.getCustomer().getCustomerId()-b.getCustomer().getCustomerId()).collect(Collectors.toList());
 		return trips;
 	}
+	/**
+	 * @param List<TripBooking>
+	 */
 
 	@Override
 	public List<TripBooking> getTripsDatewise() {
@@ -59,6 +67,14 @@ public class IAdminDaoImpl implements IAdminDao{
 		trips = trips.stream().sorted((a,b)->a.getFromDateTime().compareTo(b.getFromDateTime())).collect(Collectors.toList());
 		return trips;
 	}
+	/**
+	 * 
+	 * @param customerId
+	 * @param fromDate
+	 * @param toDate
+	 * @return List<TripBooking>
+	 * @throws CustomerNotFoundException
+	 */
 
 	@Override
 	public List<TripBooking> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime toDate)

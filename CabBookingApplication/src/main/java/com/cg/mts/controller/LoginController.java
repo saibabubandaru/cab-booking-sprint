@@ -26,7 +26,7 @@ public class LoginController {
 			customer.setUsername(username);
 			customer.setPassword(password);
 
-			return lServiceImpl.validateCredentials(customer);
+			return lServiceImpl.validateCredintials(customer);
 		} catch (Exception e) {
 			 throw new InvalidUserOrPasswordException("Invalid Login/Password");
 		}
@@ -40,7 +40,7 @@ public class LoginController {
 			Admin admin = new Admin();
 			admin.setUsername(username);
 			admin.setPassword(password);
-			return lServiceImpl.validateCredentials(admin);
+			return lServiceImpl.validateCredintials(admin);
 		} catch (Exception e) {
 			throw new InvalidUserOrPasswordException("Invalid Login/Password");
 		}
@@ -55,7 +55,7 @@ public class LoginController {
 			Driver driver = new Driver();
 			driver.setUsername(username);
 			driver.setPassword(password);
-			return lServiceImpl.validateCredentials(driver);
+			return lServiceImpl.validateCredintials(driver);
 		} catch (Exception e) {
 			throw new InvalidUserOrPasswordException("Invalid Login/Password");
 		}

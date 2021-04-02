@@ -37,26 +37,48 @@ public class AdminController {
 	@Autowired
 	ICustomerService cusService;
 
+	/**
+	 * 
+	 * @param admin
+	 * @return String
+	 * @throws InvalidUserOrPasswordException
+	 */
 	@PostMapping("/login")
 	public String validateAdmin(@RequestBody Admin admin) throws InvalidUserOrPasswordException {
 		String response;
 		try {
-			response = ls.validateCredentials(admin);
+			response = ls.validateCredintials(admin);
 		} catch (Exception e) {
 			throw new InvalidUserOrPasswordException("Invalid Username/Password");
 		}
 		return response;
 	}
+	/**
+	 * 
+	 * @return List<Admin>
+	 */
 
 	@GetMapping
 	public List<Admin> viewALlAdmin() {
 		return ias.viewALlAdmin();
 	}
+	/**
+	 * 
+	 * @param admin
+	 * @return Admin
+	 */
 
 	@PostMapping
 	public Admin insertAdmin(@RequestBody Admin admin) {
 		return ias.insertAdmin(admin);
 	}
+	
+	/**
+	 * 
+	 * @param adminId
+	 * @return List<Admin>
+	 * @throws AdminNotFoundException
+	 */
 
 	@DeleteMapping("/{adminId}")
 	public List<Admin> deleteAdmin(@PathVariable int adminId) throws AdminNotFoundException {
@@ -70,6 +92,12 @@ public class AdminController {
 		return s;
 
 	}
+	/**
+	 * 
+	 * @param admin
+	 * @return Admin
+	 * @throws AdminNotFoundException
+	 */
 
 	@PutMapping
 	public Admin updateAdmin(@RequestBody Admin admin) throws AdminNotFoundException {
@@ -84,6 +112,12 @@ public class AdminController {
 		return a;
 	}
 
+	/**
+	 * 
+	 * @param adminId
+	 * @return Admin
+	 * @throws AdminNotFoundException
+	 */
 	@GetMapping("/{adminId}")
 	public Admin GetAdminById(@PathVariable int adminId) throws AdminNotFoundException {
 		Admin a = null;
@@ -96,6 +130,12 @@ public class AdminController {
 		}
 		return a;
 	}
+	/**
+	 * 
+	 * @param customerId
+	 * @return List<TripBooking>
+	 * @throws CustomerNotFoundException
+	 */
 
 	@SuppressWarnings("unused")
 	@GetMapping("/alltrips/{customerId}")
@@ -111,21 +151,42 @@ public class AdminController {
 		}
 		return t;
 	}
+	/**
+	 * 
+	 * @return List<TripBooking>
+	 */
 
 	@GetMapping("/cabwise")
 	public List<TripBooking> getTripsCabwise() {
 		return ias.getTripsCabwise();
 	}
+	/**
+	 * 
+	 * @return List<TripBooking>
+	 */
 
 	@GetMapping("/customerwise")
 	public List<TripBooking> getTripsCustomerwise() {
 		return ias.getTripsCustomerwise();
 	}
+	
+	/**
+	 * 
+	 * @return List<TripBooking> 
+	 */
 
 	@GetMapping("/datewise")
 	public List<TripBooking> getTripsDatewise() {
 		return ias.getTripsDatewise();
 	}
+	/**
+	 * 
+	 * @param customerId
+	 * @param fromDate
+	 * @param toDate
+	 * @return List<TripBooking>
+	 * @throws CustomerNotFoundException
+	 */
 
 	@GetMapping("fordays/{customerId}/{fromDate}/{toDate}")
 	public List<TripBooking> getAllTripsForDays(@PathVariable("customerId") int customerId,

@@ -41,4 +41,10 @@ public class ITripBookingServiceImpl implements ITripBookingService {
 		return tbDao.calculateBill(customerId);
 	}
 
+	@Override
+	public List<TripBooking> viewAllTripsById(int tripbookingId) {
+		// TODO Auto-generated method stub
+		return tbDao.viewAllTripsById(tripbookingId);
+	}
+
 }
