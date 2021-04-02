@@ -98,4 +98,10 @@ public class ICabServiceImpl implements ICabService {
 		return cabDao.findById(cabID).get();
 	}
 
+	@Override
+	public List<Cab> deleteCabById(int cabID) {
+		cabDao.deleteById(cabID);
+		return cabDao.findAll();
+	}
+
 }

@@ -16,4 +16,6 @@ public interface ICabService {
 	public int countCabsOfType(String carType);
 
 	public Cab getCabById(int cabID);
+
+	public List<Cab> deleteCabById(int cabID);
 }

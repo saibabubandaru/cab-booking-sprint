@@ -52,7 +52,7 @@ public class CustomerController {
 	 */
 
 	@PostMapping
-	public Customer insertCustomer(Customer customer) {
+	public Customer insertCustomer(@RequestBody Customer customer) {
 		return cusService.insertCustomer(customer);
 	}
 
@@ -65,7 +65,7 @@ public class CustomerController {
 
 	@SuppressWarnings("unused")
 	@PutMapping
-	public Customer updateCustomer(Customer customer) throws CustomerNotFoundException {
+	public Customer updateCustomer(@RequestBody Customer customer) throws CustomerNotFoundException {
 		Customer cViewer = null;
 		Customer c = null;
 		try {
