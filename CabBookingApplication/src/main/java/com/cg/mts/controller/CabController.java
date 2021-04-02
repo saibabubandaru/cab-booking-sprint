@@ -73,10 +73,15 @@ public class CabController {
 		}
 		return c;
 	}
-	
-	@DeleteMapping(value="/id/{cabId}")
-	public String deletedBycCabId(@PathVariable int cabId) {
-		return iCabService.deleteCabById(cabId);
+
+	@DeleteMapping(value = "/{cabId}")
+	public List<Cab> deleteCabById(@PathVariable int cabId) throws CabNotFoundException {
+		try {
+			return iCabService.deleteCabById(cabId);
+		} catch (Exception e) {
+			throw new CabNotFoundException("Cab not found to Delete");
+		}
+
 	}
 
 	/**
