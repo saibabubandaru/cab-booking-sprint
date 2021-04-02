@@ -55,17 +55,22 @@ class DriverModuleTests extends AbstractTest {
 
 		assertEquals("sai12", d.getUsername());
 	}
-	
+
 	@Test
-	public void insertDriver() throws Exception{
+	public void insertDriver() throws Exception {
 
 		String uri = "/driver";
-		Driver driver = new Driver(444,"AP05B15" , null, 4.5f);
+		Driver driver = new Driver(444, "AP05B15", null, 4.5f);
+		driver.setEmail("maddala@gm.cm");
+		driver.setUsername("maddala");
+		driver.setPassword("password");
+		driver.setMobileNumber("7358160589");
 		String inputJson = mapToJson(driver);
-		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri).contentType(MediaType.APPLICATION_JSON).content(inputJson)).andReturn();
+		MvcResult mvcResult = mvc
+				.perform(MockMvcRequestBuilders.post(uri).contentType(MediaType.APPLICATION_JSON).content(inputJson))
+				.andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
 	}
 
 }
-
