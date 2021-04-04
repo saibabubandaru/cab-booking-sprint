@@ -18,6 +18,11 @@ import com.cg.mts.exception.InvalidUserOrPasswordException;
 import com.cg.mts.service.ICustomerService;
 import com.cg.mts.util.LoginService;
 
+/**
+ * @author Praharshini
+ *
+ */
+
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {

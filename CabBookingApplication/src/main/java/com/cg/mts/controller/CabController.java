@@ -15,6 +15,11 @@ import com.cg.mts.entities.Cab;
 import com.cg.mts.exception.CabNotFoundException;
 import com.cg.mts.service.ICabService;
 
+/**
+ * @author Sai Kishore
+ *
+ */
+
 @RestController
 @RequestMapping("/cab")
 public class CabController {
@@ -104,6 +109,22 @@ public class CabController {
 	@GetMapping(value = "/count/{carType}")
 	public int countCabsOfType(@PathVariable String carType) {
 		return iCabService.countCabsOfType(carType);
+	}
+	
+	
+	/**
+	 * @param cabId
+	 * @return
+	 * @throws CabNotFoundException
+	 */
+	@GetMapping(value = "/{cabId}")
+	public Cab getCabById(@PathVariable int cabId) throws CabNotFoundException {
+		try {
+			return iCabService.getCabById(cabId);
+		} catch (Exception e) {
+			throw new CabNotFoundException("Cab With ID: "+cabId+" Not Found");
+		}
+
 	}
 
 }

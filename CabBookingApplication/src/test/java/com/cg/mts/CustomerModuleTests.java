@@ -12,7 +12,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.cg.mts.entities.Customer;
-import com.cg.mts.entities.Driver;
 
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)
@@ -70,13 +69,13 @@ class CustomerModuleTests extends AbstractTest {
 		assertEquals("updatedMail@gm.com", c.getEmail());
 
 	}
-	
+
 	@Test
 	public void insertCustomer() throws Exception {
 
 		String uri = "/customer";
 		Customer customer = new Customer(45465);
-	 
+
 		customer.setEmail("customer@g.com");
 		customer.setMobileNumber("9182829300");
 		customer.setPassword("kishoreTheGreat");

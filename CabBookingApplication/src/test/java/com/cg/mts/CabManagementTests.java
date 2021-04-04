@@ -70,5 +70,18 @@ public class CabManagementTests extends AbstractTest {
 		Cab cabList[] = super.mapFromJson(content, Cab[].class);
 		assertEquals(3, cabList.length);
 	}
+	
+	@Test
+	public void getCabById() throws Exception {
+		String uri = "/cab/20";
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)).andReturn();
+		int status = mvcResult.getResponse().getStatus();
+		assertEquals(200, status);
+		String content = mvcResult.getResponse().getContentAsString();
+		Cab cab = super.mapFromJson(content, Cab.class);
+		assertEquals("SuperXL", cab.getCarType());
+
+	}
+	
 
 }

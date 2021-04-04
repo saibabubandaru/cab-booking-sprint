@@ -31,10 +31,6 @@ class DriverModuleTests extends AbstractTest {
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
 	}
-// Get cab by ID
-// Update Cab
-// Delete Cab
-// Insert
 
 	@Test
 	public void deleteDriver() throws Exception {
@@ -53,7 +49,7 @@ class DriverModuleTests extends AbstractTest {
 
 		Driver d = mapFromJson(content, Driver.class);
 
-		assertEquals("sai12", d.getUsername());
+		assertEquals("DriverUserTrail", d.getUsername());
 	}
 
 	@Test
@@ -71,6 +67,25 @@ class DriverModuleTests extends AbstractTest {
 				.andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
+	}
+
+	@Test
+	public void updateDriver() throws Exception {
+		String uri = "/driver/9";
+		String putUri = "/driver";
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)).andReturn();
+		int status = mvcResult.getResponse().getStatus();
+		assertEquals(200, status);
+		String content = mvcResult.getResponse().getContentAsString();
+		Driver driver = mapFromJson(content, Driver.class);
+		driver.setEmail("updatedDriverMail@cab.com");
+		String inputJson = mapToJson(driver);
+		MvcResult mvcResultt = mvc
+				.perform(MockMvcRequestBuilders.put(putUri).contentType(MediaType.APPLICATION_JSON).content(inputJson))
+				.andReturn();
+		int putStatus = mvcResultt.getResponse().getStatus();
+		assertEquals(200, putStatus);
+
 	}
 
 }
