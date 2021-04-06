@@ -15,15 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.mts.entities.TripBooking;
 import com.cg.mts.service.ITripBookingService;
 
+/**
+ * @author Prem Sai Ganesh
+ * @version 1.0
+ */
 @RestController
 @RequestMapping("/tripbooking")
 public class TripBookingController {
 
+	
 	@Autowired
 	ITripBookingService itbs;
 
 	/**
-	 * 
+	 * insertTripBooking
 	 * @param tripBooking
 	 * @return TripBooking
 	 */
@@ -33,7 +38,7 @@ public class TripBookingController {
 	}
 
 	/**
-	 * 
+	 * updateTripBooking
 	 * @param tripBooking
 	 * @return TripBooking
 	 */
@@ -44,7 +49,7 @@ public class TripBookingController {
 	}
 
 	/**
-	 * 
+	 * deleteTripBooking
 	 * @param tripBooking
 	 * @return List<TripBooking>
 	 */
@@ -55,7 +60,7 @@ public class TripBookingController {
 	}
 
 	/**
-	 * 
+	 * viewAllTripsCustomer
 	 * @param customerId
 	 * @return List<TripBooking>
 	 */
@@ -66,7 +71,7 @@ public class TripBookingController {
 	}
 
 	/**
-	 * 
+	 * calculateBill
 	 * @param customerId
 	 * @return float
 	 */
@@ -74,5 +79,13 @@ public class TripBookingController {
 	public float calculateBill(@PathVariable int customerId) {
 		return itbs.calculateBill(customerId);
 	}
-
+    /**
+     * viewAllTripsById
+     * @param tripBookingId
+     * @return List<TripBooking>
+     */
+	@GetMapping("/tripbookingId")
+	public List<TripBooking> viewAllTripsById(@PathVariable int tripBookingId){
+		return itbs.viewAllTripsById(tripBookingId);
+	}
 }
