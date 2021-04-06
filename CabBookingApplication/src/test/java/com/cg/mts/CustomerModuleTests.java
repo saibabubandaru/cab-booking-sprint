@@ -22,10 +22,7 @@ class CustomerModuleTests extends AbstractTest {
 	public void setUp() {
 		super.setUp();
 	}
-    /**
-     * getStatusCode
-     * @throws Exception
-     */
+
 	@Test
 	public void getStausCode() throws Exception {
 		String uri = "/customer/6";
@@ -33,10 +30,7 @@ class CustomerModuleTests extends AbstractTest {
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
 	}
-    /**
-     * getUsername
-     * @throws Exception
-     */
+
 	@Test
 	public void getUsername() throws Exception {
 		String uri = "/customer/1";
@@ -48,10 +42,7 @@ class CustomerModuleTests extends AbstractTest {
 		assertEquals("shadow007", customer.getUsername());
 
 	}
-    /**
-     * updateCustomer
-     * @throws Exception
-     */
+
 	@Test
 	public void updateCustomer() throws Exception {
 
@@ -78,10 +69,7 @@ class CustomerModuleTests extends AbstractTest {
 		assertEquals("updatedMail@gm.com", c.getEmail());
 
 	}
-    /**
-     * insertCustomer
-     * @throws Exception
-     */
+
 	@Test
 	public void insertCustomer() throws Exception {
 
