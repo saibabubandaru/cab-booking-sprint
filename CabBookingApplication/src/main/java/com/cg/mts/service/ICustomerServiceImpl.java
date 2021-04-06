@@ -80,4 +80,11 @@ public class ICustomerServiceImpl implements ICustomerService {
 		return null;
 	}
 
+	@Override
+	public Customer deleteCustomerById(int customerID) {
+		 Customer c = viewCustomer(customerID);
+		cDao.deleteById(customerID);
+		return c;
+	}
+
 }

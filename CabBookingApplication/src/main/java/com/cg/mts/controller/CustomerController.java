@@ -23,6 +23,10 @@ import com.cg.mts.util.LoginService;
  *
  */
 
+/**
+ * @author shado
+ *
+ */
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -137,9 +141,32 @@ public class CustomerController {
 	 * @param password
 	 * @return Customer
 	 */
+	
+	
 
 	public Customer validateCustomer(String username, String password) {
 		return null;
+	}
+	
+	
+	
+	/**
+	 * @param customerId
+	 * @return Customer
+	 * @throws CustomerNotFoundException
+	 */
+	@SuppressWarnings("unused")
+	@DeleteMapping(value = "/{customerId}")
+	public Customer deleteCustomerById(@PathVariable int customerId) throws CustomerNotFoundException{
+		Customer c = null;
+		try {
+			c = viewCustomer(customerId);
+			return cusService.deleteCustomerById(customerId);
+			
+		} catch (Exception e) {
+			throw new CustomerNotFoundException("Customer with Id: " + customerId + " Not Found To Delete!");
+		}
+		
 	}
 
 }
