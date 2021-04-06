@@ -1,6 +1,7 @@
 package com.cg.mts;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
 import com.cg.mts.entities.Customer;
 
 @SpringBootTest
@@ -88,4 +88,10 @@ class CustomerModuleTests extends AbstractTest {
 		assertEquals(200, status);
 	}
 
+	@Test
+	public void deleteCustomer() throws Exception {
+		this.mvc.perform(MockMvcRequestBuilders.delete("/customer/4").contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+
+	}
 }
