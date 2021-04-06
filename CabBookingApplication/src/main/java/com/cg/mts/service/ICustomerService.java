@@ -16,6 +16,4 @@ public interface ICustomerService {
 	public Customer viewCustomer(int customerId);
 
 	public Customer validateCustomer(String username, String password);
-
-	public Customer deleteCustomerById(int customerID);
 }

@@ -23,7 +23,10 @@ class DriverModuleTests extends AbstractTest {
 	public void setUp() {
 		super.setUp();
 	}
-
+    /**
+     * getStatusCode
+     * @throws Exception
+     */
 	@Test
 	public void getStausCode() throws Exception {
 		String uri = "/driver/";
@@ -31,14 +34,20 @@ class DriverModuleTests extends AbstractTest {
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
 	}
-
+    /**
+     * deleteDriver
+     * @throws Exception
+     */
 	@Test
 	public void deleteDriver() throws Exception {
 		this.mvc.perform(MockMvcRequestBuilders.delete("/driver/9").contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 
 	}
-
+    /**
+     * getDriverById
+     * @throws Exception
+     */
 	@Test
 	public void getDriverById() throws Exception {
 		String uri = "/driver/10";
@@ -68,7 +77,10 @@ class DriverModuleTests extends AbstractTest {
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
 	}
-
+    /**
+     * updateDriver
+     * @throws Exception
+     */
 	@Test
 	public void updateDriver() throws Exception {
 		String uri = "/driver/9";

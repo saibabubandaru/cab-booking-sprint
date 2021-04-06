@@ -20,13 +20,9 @@ import com.cg.mts.util.LoginService;
 
 /**
  * @author Praharshini
- *
+ * @version 1.0
  */
 
-/**
- * @author shado
- *
- */
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -37,7 +33,7 @@ public class CustomerController {
 	LoginService ls;
 
 	/**
-	 * 
+	 * validateCustomer
 	 * @param customer
 	 * @return String
 	 * @throws InvalidUserOrPasswordException
@@ -55,7 +51,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * 
+	 * insertCustomer
 	 * @param customer
 	 * @return Customer
 	 */
@@ -87,7 +83,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * 
+	 * deleteCustomer 
 	 * @param customer
 	 * @return Customer
 	 * @throws CustomerNotFoundException
@@ -108,7 +104,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * 
+	 * viewCustomers
 	 * @return List<Customer>
 	 */
 
@@ -118,7 +114,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * 
+	 * viewCustomer
 	 * @param customerId
 	 * @return Customer
 	 * @throws CustomerNotFoundException
@@ -135,39 +131,5 @@ public class CustomerController {
 		return c;
 	}
 
-	/**
-	 * 
-	 * @param username
-	 * @param password
-	 * @return Customer
-	 */
 	
-	
-
-	public Customer validateCustomer(String username, String password) {
-		return null;
-	}
-	
-	
-	
-	/**
-	 * deleteCustomerById
-	 * @param customerId
-	 * @return Customer
-	 * @throws CustomerNotFoundException
-	 */
-	@SuppressWarnings("unused")
-	@DeleteMapping(value = "/{customerId}")
-	public Customer deleteCustomerById(@PathVariable int customerId) throws CustomerNotFoundException{
-		Customer c = null;
-		try {
-			c = viewCustomer(customerId);
-			return cusService.deleteCustomerById(customerId);
-			
-		} catch (Exception e) {
-			throw new CustomerNotFoundException("Customer with Id: " + customerId + " Not Found To Delete!");
-		}
-		
-	}
-
 }
