@@ -37,6 +37,13 @@ public class AdminController {
 	@Autowired
 	ICustomerService cusService;
 	 
+	
+	/**
+	 * 
+	 * @param admin
+	 * @return
+	 * @throws InvalidUserOrPasswordException
+	 */
 	@PostMapping("/login")
 	public String validateAdmin(@RequestBody Admin admin)throws InvalidUserOrPasswordException {
 		String response;
@@ -100,10 +107,8 @@ public class AdminController {
 	@GetMapping("/alltrips/{customerId}")
 	public List<TripBooking> getAllTrips(@PathVariable int customerId) throws CustomerNotFoundException {
 		
-		Customer c = null;
 		List<TripBooking> t=null;
 		try {
-			c = cusService.viewCustomer(customerId);
 			t = ias.getAllTrips(customerId);
 		} catch (Exception e) {
 			throw new CustomerNotFoundException("Can not find trips of Customer ID: "+customerId);
@@ -126,7 +131,7 @@ public class AdminController {
 		return ias.getTripsDatewise();
 	}
 
-	@GetMapping("fordays/{customerId}/{fromDate}/{toDate}")
+	@GetMapping("/fordays/{customerId}/{fromDate}/{toDate}")
 	public List<TripBooking> getAllTripsForDays(@PathVariable("customerId") int customerId, @PathVariable("fromDate")  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime fromDate,@PathVariable("toDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime toDate) throws CustomerNotFoundException {
 		return ias.getAllTripsForDays(customerId, fromDate, toDate);
 	}

@@ -74,10 +74,8 @@ public class DriverController {
 	
 	@PutMapping
 	public Driver updateDriver(@RequestBody Driver driver) throws DriverNotFoundException {
-		Driver driverCheck = null;
 		Driver d =null;
 		try {
-			driverCheck=viewDriver(driver.getDriverId());
 			d=ids.updateDriver(driver);
 		} catch (Exception e) {
 			throw new DriverNotFoundException("Driver with Id: "+driver.getDriverId()+" Not Found to Update!");
@@ -91,7 +89,7 @@ public class DriverController {
 		try {
 			d = ids.deleteDriver(driverId);
 		} catch (Exception e) {
-			 throw new DriverNotFoundException("Driver with Id: "+driverId+" Not FOund To Delete!");
+			 throw new DriverNotFoundException("Driver with Id: "+driverId+" Not Found To Delete!");
 		}
 		return d;
 	}
