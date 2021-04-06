@@ -23,7 +23,10 @@ public class AdminManagementTests extends AbstractTest {
 	public void setUp() {
 		super.setUp();
 	}
-
+   /**
+    * getAdminUsername
+    * @throws Exception
+    */
 	@Test
 	public void getAdminUsername() throws Exception {
 		String uri = "/admin/2";
@@ -34,6 +37,10 @@ public class AdminManagementTests extends AbstractTest {
 		Admin admin = super.mapFromJson(content, Admin.class);
 		assertEquals("admin1", admin.getUsername());
 	}
+	/**
+	 * getStatusCode
+	 * @throws Exception
+	 */
 
 	@Test
 	public void getStausCode() throws Exception {
@@ -42,6 +49,10 @@ public class AdminManagementTests extends AbstractTest {
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
 	}
+	/**
+	 * createAdmin
+	 * @throws Exception
+	 */
 
 	@Test
 	public void createAdmin() throws Exception {
@@ -64,7 +75,10 @@ public class AdminManagementTests extends AbstractTest {
 		assertEquals("creator@cab.in", a.getEmail());
 
 	}
-
+    /**
+     * updateAdmin
+     * @throws Exception
+     */
 	@Test
 	public void updateAdmin() throws Exception {
 		String uri = "/admin/2";
@@ -86,7 +100,10 @@ public class AdminManagementTests extends AbstractTest {
 		assertEquals("updatedEmail.com", a.getEmail());
 
 	}
-
+    /**
+     * deleteAdmin
+     * @throws Exception
+     */
 	@Test
 	public void deleteAdmin() throws Exception {
 
