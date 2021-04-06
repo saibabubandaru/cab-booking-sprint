@@ -151,6 +151,7 @@ public class CustomerController {
 	
 	
 	/**
+	 * deleteCustomerById
 	 * @param customerId
 	 * @return Customer
 	 * @throws CustomerNotFoundException
