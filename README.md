@@ -35,7 +35,7 @@
   - [x] Cab
   - [x] Customer
   - [x] Trip
-  - [x] Driver
+  - [ ] Driver
 - [ ] Log4j
 
 Contributors:

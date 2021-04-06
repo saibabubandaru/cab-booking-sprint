@@ -17,7 +17,7 @@ import com.cg.mts.service.ICabService;
 
 /**
  * @author Sai Kishore
- * @version 1.0
+ *
  */
 
 @RestController
@@ -28,7 +28,7 @@ public class CabController {
 	ICabService iCabService;
 
 	/**
-	 * insertCab
+	 * 
 	 * @param cab
 	 * @return Cab
 	 */
@@ -38,7 +38,7 @@ public class CabController {
 	}
 
 	/**
-	 * updateCab
+	 * 
 	 * @param cab
 	 * @return Cab
 	 * @throws CabNotFoundException
@@ -59,7 +59,7 @@ public class CabController {
 	}
 
 	/**
-	 * deleteCab
+	 * 
 	 * @param cab
 	 * @return Cab
 	 * @throws CabNotFoundException
@@ -78,12 +78,7 @@ public class CabController {
 		}
 		return c;
 	}
-    /**
-     * deleteCabById
-     * @param cabId
-     * @return List<Cab>
-     * @throws CabNotFoundException
-     */
+
 	@DeleteMapping(value = "/{cabId}")
 	public List<Cab> deleteCabById(@PathVariable int cabId) throws CabNotFoundException {
 		try {
@@ -95,7 +90,7 @@ public class CabController {
 	}
 
 	/**
-	 * viewCabsOfType
+	 * 
 	 * @param carType
 	 * @return List<Cab>
 	 */
@@ -106,7 +101,7 @@ public class CabController {
 	}
 
 	/**
-	 * countCabsOfType
+	 * 
 	 * @param carType
 	 * @return
 	 */
@@ -118,9 +113,8 @@ public class CabController {
 	
 	
 	/**
-	 * getCabById
 	 * @param cabId
-	 * @return Cab
+	 * @return
 	 * @throws CabNotFoundException
 	 */
 	@GetMapping(value = "/{cabId}")
