@@ -20,7 +20,7 @@ import com.cg.mts.util.LoginService;
 
 /**
  * @author Praharshini
- *
+ * @version 1.0
  */
 
 @RestController
@@ -33,7 +33,7 @@ public class CustomerController {
 	LoginService ls;
 
 	/**
-	 * 
+	 * validateCustomer
 	 * @param customer
 	 * @return String
 	 * @throws InvalidUserOrPasswordException
@@ -51,7 +51,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * 
+	 * insertCustomer
 	 * @param customer
 	 * @return Customer
 	 */
@@ -83,7 +83,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * 
+	 * deleteCustomer 
 	 * @param customer
 	 * @return Customer
 	 * @throws CustomerNotFoundException
@@ -104,7 +104,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * 
+	 * viewCustomers
 	 * @return List<Customer>
 	 */
 
@@ -114,7 +114,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * 
+	 * viewCustomer
 	 * @param customerId
 	 * @return Customer
 	 * @throws CustomerNotFoundException
@@ -131,15 +131,5 @@ public class CustomerController {
 		return c;
 	}
 
-	/**
-	 * 
-	 * @param username
-	 * @param password
-	 * @return Customer
-	 */
-
-	public Customer validateCustomer(String username, String password) {
-		return null;
-	}
-
+	
 }
