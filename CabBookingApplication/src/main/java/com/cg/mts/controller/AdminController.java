@@ -23,11 +23,15 @@ import com.cg.mts.exception.InvalidUserOrPasswordException;
 import com.cg.mts.service.IAdminService;
 import com.cg.mts.service.ICustomerService;
 import com.cg.mts.util.LoginService;
-
+/**
+ * @author Kavya and SumaVarshitha
+ * @version 1.0
+ */
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
 
+	
 	@Autowired
 	IAdminService ias;
 
@@ -38,7 +42,7 @@ public class AdminController {
 	ICustomerService cusService;
 
 	/**
-	 * 
+	 * validateAdmin
 	 * @param admin
 	 * @return String
 	 * @throws InvalidUserOrPasswordException
@@ -55,7 +59,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 
+	 * viewAllAdmin
 	 * @return List<Admin>
 	 */
 
@@ -65,7 +69,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 
+	 * insertAdmin
 	 * @param admin
 	 * @return Admin
 	 */
@@ -76,7 +80,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 
+	 * deleteAdmin
 	 * @param adminId
 	 * @return List<Admin>
 	 * @throws AdminNotFoundException
@@ -96,7 +100,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 
+	 * updateAdmin
 	 * @param admin
 	 * @return Admin
 	 * @throws AdminNotFoundException
@@ -116,7 +120,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 
+	 * GetAdminById
 	 * @param adminId
 	 * @return Admin
 	 * @throws AdminNotFoundException
@@ -135,7 +139,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 
+	 * getAllTrips
 	 * @param customerId
 	 * @return List<TripBooking>
 	 * @throws CustomerNotFoundException
@@ -157,7 +161,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 
+	 * getTripsCabwise(
 	 * @return List<TripBooking>
 	 */
 
@@ -167,7 +171,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 
+	 * getTripsCustomerwise
 	 * @return List<TripBooking>
 	 */
 
@@ -177,7 +181,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 
+	 * getTripsDatewise
 	 * @return List<TripBooking>
 	 */
 
@@ -187,7 +191,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 
+	 * getAllTripsForDays
 	 * @param customerId
 	 * @param fromDate
 	 * @param toDate
