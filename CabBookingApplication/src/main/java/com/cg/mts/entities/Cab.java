@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Cab {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	private int cabId;
 	private String carType;
 	private float perKmRate;
