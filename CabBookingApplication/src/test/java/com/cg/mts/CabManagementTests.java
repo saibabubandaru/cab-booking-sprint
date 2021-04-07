@@ -23,10 +23,12 @@ public class CabManagementTests extends AbstractTest {
 	public void setUp() {
 		super.setUp();
 	}
-    /**
-     * createCab
-     * @throws Exception
-     */
+
+	/**
+	 * createCab
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void createCab() throws Exception {
 		String uri = "/cab";
@@ -43,10 +45,12 @@ public class CabManagementTests extends AbstractTest {
 		assertEquals("SuperXL", c.getPerKmRate());
 
 	}
-    /**
-     * getCabType
-     * @throws Exception
-     */
+
+	/**
+	 * getCabType
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void getCabType() throws Exception {
 		String uri = "/cab/type/SuperXL";
@@ -58,20 +62,24 @@ public class CabManagementTests extends AbstractTest {
 		assertEquals("SuperXL", cabList[cabList.length - 1].getCarType());
 
 	}
-    /**
-     * deleteCab
-     * @throws Exception
-     */
+
+	/**
+	 * deleteCab
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void deleteCab() throws Exception {
 		this.mvc.perform(MockMvcRequestBuilders.delete("/cab/4").contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 
 	}
-    /**
-     * countCabsByType
-     * @throws Exception
-     */
+
+	/**
+	 * countCabsByType
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void countCabsByType() throws Exception {
 		String uri = "/cab/type/SUV";
@@ -82,8 +90,10 @@ public class CabManagementTests extends AbstractTest {
 		Cab cabList[] = super.mapFromJson(content, Cab[].class);
 		assertEquals(3, cabList.length);
 	}
+
 	/**
 	 * getCabById
+	 * 
 	 * @throws Exception
 	 */
 	@Test
@@ -97,6 +107,5 @@ public class CabManagementTests extends AbstractTest {
 		assertEquals("SuperXL", cab.getCarType());
 
 	}
-	
 
 }

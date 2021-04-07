@@ -18,5 +18,5 @@ public interface ICabService {
 	public Cab getCabById(int cabID);
 
 	public List<Cab> deleteCabById(int cabID);
-	
+
 }

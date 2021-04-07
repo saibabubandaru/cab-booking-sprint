@@ -29,6 +29,7 @@ public class CabController {
 
 	/**
 	 * insertCab
+	 * 
 	 * @param cab
 	 * @return Cab
 	 */
@@ -39,6 +40,7 @@ public class CabController {
 
 	/**
 	 * updateCab
+	 * 
 	 * @param cab
 	 * @return Cab
 	 * @throws CabNotFoundException
@@ -60,6 +62,7 @@ public class CabController {
 
 	/**
 	 * deleteCab
+	 * 
 	 * @param cab
 	 * @return Cab
 	 * @throws CabNotFoundException
@@ -78,12 +81,14 @@ public class CabController {
 		}
 		return c;
 	}
-    /**
-     * deleteCabById
-     * @param cabId
-     * @return List<Cab>
-     * @throws CabNotFoundException
-     */
+
+	/**
+	 * deleteCabById
+	 * 
+	 * @param cabId
+	 * @return List<Cab>
+	 * @throws CabNotFoundException
+	 */
 	@DeleteMapping(value = "/{cabId}")
 	public List<Cab> deleteCabById(@PathVariable int cabId) throws CabNotFoundException {
 		try {
@@ -96,6 +101,7 @@ public class CabController {
 
 	/**
 	 * viewCabsOfType
+	 * 
 	 * @param carType
 	 * @return List<Cab>
 	 */
@@ -107,6 +113,7 @@ public class CabController {
 
 	/**
 	 * countCabsOfType
+	 * 
 	 * @param carType
 	 * @return
 	 */
@@ -115,10 +122,10 @@ public class CabController {
 	public int countCabsOfType(@PathVariable String carType) {
 		return iCabService.countCabsOfType(carType);
 	}
-	
-	
+
 	/**
 	 * getCabById
+	 * 
 	 * @param cabId
 	 * @return Cab
 	 * @throws CabNotFoundException
@@ -128,7 +135,7 @@ public class CabController {
 		try {
 			return iCabService.getCabById(cabId);
 		} catch (Exception e) {
-			throw new CabNotFoundException("Cab With ID: "+cabId+" Not Found");
+			throw new CabNotFoundException("Cab With ID: " + cabId + " Not Found");
 		}
 
 	}

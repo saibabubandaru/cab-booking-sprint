@@ -9,5 +9,4 @@ import com.cg.mts.entities.Customer;
 @Repository("cDao")
 public interface ICustomerRepository extends ICustomerDao, JpaRepository<Customer, Integer> {
 
-
 }

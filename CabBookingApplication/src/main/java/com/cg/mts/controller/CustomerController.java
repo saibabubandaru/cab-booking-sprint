@@ -34,6 +34,7 @@ public class CustomerController {
 
 	/**
 	 * validateCustomer
+	 * 
 	 * @param customer
 	 * @return String
 	 * @throws InvalidUserOrPasswordException
@@ -52,6 +53,7 @@ public class CustomerController {
 
 	/**
 	 * insertCustomer
+	 * 
 	 * @param customer
 	 * @return Customer
 	 */
@@ -83,7 +85,8 @@ public class CustomerController {
 	}
 
 	/**
-	 * deleteCustomer 
+	 * deleteCustomer
+	 * 
 	 * @param customer
 	 * @return Customer
 	 * @throws CustomerNotFoundException
@@ -105,6 +108,7 @@ public class CustomerController {
 
 	/**
 	 * viewCustomers
+	 * 
 	 * @return List<Customer>
 	 */
 
@@ -115,6 +119,7 @@ public class CustomerController {
 
 	/**
 	 * viewCustomer
+	 * 
 	 * @param customerId
 	 * @return Customer
 	 * @throws CustomerNotFoundException
@@ -131,5 +136,4 @@ public class CustomerController {
 		return c;
 	}
 
-	
 }

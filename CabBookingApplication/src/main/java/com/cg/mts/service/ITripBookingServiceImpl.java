@@ -23,8 +23,9 @@ public class ITripBookingServiceImpl implements ITripBookingService {
 		tbDao.saveAndFlush(tripBooking);
 		return tripBooking;
 	}
+
 	/**
-	 *@param tripBooking
+	 * @param tripBooking
 	 * @return TripBooking
 	 */
 
@@ -32,6 +33,7 @@ public class ITripBookingServiceImpl implements ITripBookingService {
 	public TripBooking updateTripBooking(TripBooking tripBooking) {
 		return tbDao.saveAndFlush(tripBooking);
 	}
+
 	/**
 	 * @param tripBooking
 	 * @return List<TripBooking>
@@ -42,24 +44,27 @@ public class ITripBookingServiceImpl implements ITripBookingService {
 		tbDao.deleteById(tripBooking.getTripBookingId());
 		return tbDao.findAll();
 	}
+
 	/**
 	 * @param customerId
-	 * @return  List<TripBooking>
+	 * @return List<TripBooking>
 	 */
 
 	@Override
 	public List<TripBooking> viewAllTripsCustomer(int customerId) {
 		return tbDao.viewAllTripsCustomer(customerId);
 	}
+
 	/**
-	 *  @param customerId
-	 *  @return float
+	 * @param customerId
+	 * @return float
 	 */
 
 	@Override
 	public float calculateBill(int customerId) {
 		return tbDao.calculateBill(customerId);
 	}
+
 	/**
 	 * @param tripBookingId
 	 * @return List<TripBooking>

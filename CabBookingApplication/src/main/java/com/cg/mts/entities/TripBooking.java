@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -22,10 +21,10 @@ public class TripBooking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int tripBookingId;
-	@ManyToOne(targetEntity = Customer.class,fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	@JoinColumn(name = "customerId",referencedColumnName = "customerId")
+	@ManyToOne(targetEntity = Customer.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "customerId", referencedColumnName = "customerId")
 	private Customer customer;
-	@ManyToOne(targetEntity = Driver.class,fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = Driver.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "driverId", referencedColumnName = "driverId")
 	private Driver driver;
 	private String fromLocation;
@@ -39,9 +38,9 @@ public class TripBooking {
 	private boolean status;
 	private float distanceInKm;
 	private float bill;
-	
+
 	public TripBooking() {
-		
+
 	}
 
 	public int getTripBookingId() {

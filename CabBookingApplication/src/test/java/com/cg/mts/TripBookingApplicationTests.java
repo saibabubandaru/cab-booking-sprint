@@ -23,10 +23,12 @@ public class TripBookingApplicationTests extends AbstractTest {
 	public void setUp() {
 		super.setUp();
 	}
-    /**
-     * insertTrip
-     * @throws Exception
-     */
+
+	/**
+	 * insertTrip
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void insertTrip() throws Exception {
 		String uri = "/tripbooking";
@@ -51,10 +53,12 @@ public class TripBookingApplicationTests extends AbstractTest {
 		TripBooking trip = super.mapFromJson(content, TripBooking.class);
 		assertEquals(3, trip.getTripBookingId());
 	}
-    /**
-     * updateTrip
-     * @throws Exception
-     */
+
+	/**
+	 * updateTrip
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void updateTrip() throws Exception {
 		String uri = "test/tripbooking/1";
@@ -76,10 +80,12 @@ public class TripBookingApplicationTests extends AbstractTest {
 		assertEquals(290, a.getBill());
 
 	}
-    /**
-     * deleteTrip
-     * @throws Exception
-     */
+
+	/**
+	 * deleteTrip
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void deleteTrip() throws Exception {
 		this.mvc.perform(MockMvcRequestBuilders.delete("/trip/tripbooking/1").contentType(MediaType.APPLICATION_JSON)
