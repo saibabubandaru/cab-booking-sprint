@@ -30,12 +30,12 @@
   - [x] Cab
   - [x] Customer
   - [x] Driver
-- [ ] Junit Testing
+- [x] Junit Testing
   - [x] Admin
   - [x] Cab
   - [x] Customer
   - [x] Trip
-  - [ ] Driver
+  - [x] Driver
 
 
 Contributors:
