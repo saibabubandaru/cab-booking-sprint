@@ -36,7 +36,7 @@
   - [x] Customer
   - [x] Trip
   - [ ] Driver
-- [ ] Log4j
+
 
 Contributors:
 <br>
